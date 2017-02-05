@@ -284,7 +284,7 @@ WARNING: however, you are using PetaLinux SDK version &quot;2016.3&quot;.
 Please input &quot;y&quot; to continue. Otherwise it will exit![n]
 </pre>
             </div>
-            <p>おう2016.3なんてSDKしらねーけど大丈夫か?と聞かれます<a id="fnb-sdk-2016-3" href="#fn-sdk-2016-3" class="noteref" epub:type="noteref">*1</a>。力強く<b>y</b>と返します。</p>
+            <p>おう2016.3なんてSDKしらねーけど大丈夫か?と聞かれます<a id="fnb-sdk-2016-3" href="#fn-sdk-2016-3" class="noteref">*1</a>。力強く<b>y</b>と返します。</p>
             <div class="cmd-code">
                 <pre class="cmd">y
 INFO: Checking component...
@@ -305,7 +305,7 @@ ERROR: Failed to build linux! Failed to get makefiles for subcomponents of linux
             <p>ということで、実は
                 <a href="https://forums.xilinx.com/t5/Embedded-Development-Tools/Error-when-creating-first-SDK-project-after-installation-of/td-p/643937"
                     class="link">https://forums.xilinx.com/t5/Embedded-Development-Tools/Error-when-creating-first-SDK-project-after-installation-of/td-p/643937</a>に、なんやビルドが失敗して辛いという話がありまして、このあたりを参考にして適宜パッケージを導入しましょう。</p>
-            <div class="footnote" epub:type="footnote" id="fn-sdk-2016-3">
+            <div class="footnote" id="fn-sdk-2016-3">
                 <p class="footnote">[*1] ちなみに最新版の2016.4を使わず2016.3を使っていたのは、SDSoCの最新が2016.3でそれにあわせたためです</p>
             </div>
 
@@ -349,8 +349,8 @@ ERROR: Failed to build linux! Failed to get makefiles for subcomponents of linux
             <blockquote>
                 <p>I would like to use a cross-compiler other than the default toolchain included with PetaLinux.  Is this possible?</p>
             </blockquote>
-            <p>に対して、環境変数指定で内部のツールチェーンを部分的に差し替えられると書いています<a id="fnb-code-sourcery" href="#fn-code-sourcery" class="noteref" epub:type="noteref">*2</a>。</p>
-            <div class="footnote" epub:type="footnote" id="fn-code-sourcery">
+            <p>に対して、環境変数指定で内部のツールチェーンを部分的に差し替えられると書いています<a id="fnb-code-sourcery" href="#fn-code-sourcery" class="noteref">*2</a>。</p>
+            <div class="footnote" id="fn-code-sourcery">
                 <p class="footnote">[*2] そういえば<a href="http://www.wiki.xilinx.com/Install+Xilinx+Tools" class="link">http://www.wiki.xilinx.com/Install+Xilinx+Tools</a>でZynq
                     7000用に紹介されているツールチェーン、Code Sourcery版とlinaro版などの差が分かっていないので、そのうち調べようと思います。単純にsoftfpuとhardfpu利用の差だけなのかな</p>
             </div>
