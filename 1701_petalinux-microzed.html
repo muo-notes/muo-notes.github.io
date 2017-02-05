@@ -1,0 +1,798 @@
+<!doctype html>
+<html amp lang="ja">
+
+<head>
+    <meta charset="utf-8">
+    <script async src="https://cdn.ampproject.org/v0.js"></script>
+    <title>Hello, AMPs</title>
+    <link rel="canonical" href="https://muosandbox4716.blob.core.windows.net/amptest/index.html" />
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+    <script type="application/ld+json">
+        {
+        "@context": "http://schema.org",
+        "@type": "NewsArticle",
+        "headline": "PetaLinuxで手軽にZynq(MicroZed)用カスタムLinuxを作る",
+        "datePublished": "2017-01-25T12:05:00Z",
+        "image": [
+        ]
+      }
+    </script>
+    <script async custom-element="amp-list" src="https://cdn.ampproject.org/v0/amp-list-0.1.js"></script>
+    <script async custom-template="amp-mustache" src="https://cdn.ampproject.org/v0/amp-mustache-0.1.js"></script>
+    <script async custom-element="amp-social-share" src="https://cdn.ampproject.org/v0/amp-social-share-0.1.js"></script>
+    <style amp-custom>
+        /* any custom style goes here */
+        
+        body {
+            background-color: #E4ECEF;
+            color: #202121;
+        }
+    </style>
+    <style amp-boilerplate>
+        body {
+            -webkit-animation: -amp-start 8s steps(1, end) 0s 1 normal both;
+            -moz-animation: -amp-start 8s steps(1, end) 0s 1 normal both;
+            -ms-animation: -amp-start 8s steps(1, end) 0s 1 normal both;
+            animation: -amp-start 8s steps(1, end) 0s 1 normal both
+        }
+        
+        @-webkit-keyframes -amp-start {
+            from {
+                visibility: hidden
+            }
+            to {
+                visibility: visible
+            }
+        }
+        
+        @-moz-keyframes -amp-start {
+            from {
+                visibility: hidden
+            }
+            to {
+                visibility: visible
+            }
+        }
+        
+        @-ms-keyframes -amp-start {
+            from {
+                visibility: hidden
+            }
+            to {
+                visibility: visible
+            }
+        }
+        
+        @-o-keyframes -amp-start {
+            from {
+                visibility: hidden
+            }
+            to {
+                visibility: visible
+            }
+        }
+        
+        @keyframes -amp-start {
+            from {
+                visibility: hidden
+            }
+            to {
+                visibility: visible
+            }
+        }
+        
+        .header-img {
+            border-bottom: 1px red solid;
+        }
+        
+        .header {
+            background-color: red;
+            color: white;
+            padding: 2px 2px 2px 6px;
+        }
+        
+        .social-buttons {
+            padding-top: 4px;
+            text-align: center;
+        }
+        
+        amp-social-share[type="b-hatena"] {
+            background-image: url(/res/hatenabookmark-logomark.svg);
+        }
+        
+        h2.navigation,
+        h3.navigation {
+            background-color: #CED6D3;
+            margin-left: 6px;
+            margin-bottom: 0px;
+            padding-left: 16px;
+            width: 160px;
+            border-radius: 50px 50px 0 0;
+        }
+        
+        .content {
+            margin: 0 6px 0px 6px;
+            padding: 8px 4px 8px 4px;
+            border-radius: 0 0px 2px 2px;
+            background-color: #DFE5E8;
+        }
+        
+        h1.subject {
+            font-size: 1.5em;
+        }
+        
+        div.content-wrapper {
+            text-align: left;
+            max-width: 920px;
+            float: left;
+        }
+        
+        .review-post pre.cmd {
+            overflow: auto;
+            padding: 8px;
+            background-color: black;
+            color: #ffffff;
+        }
+        
+        .review-post pre.emlist {
+            overflow: auto;
+            margin: 8px;
+            background-color: #f9f9f9;
+        }
+        
+        .review-post tt.inline-code {
+            font-weight: bold;
+        }
+        
+        .review-post br {
+            margin: 0px 0px 12px 0px;
+            display: block;
+            content: " ";
+        }
+        
+        .review-post h2,
+        .review-post h3,
+        .review-post h4 {
+            color: #757EFF;
+            border-bottom: 1px solid #000;
+            padding-bottom: 0.1em !important;
+        }
+        
+        .review-post h2 {
+            font-size: 1.5em;
+        }
+        
+        .review-post h3 {
+            font-size: 1.2em;
+        }
+        
+        .review-post h4 {
+            font-size: 1.1em;
+        }
+        
+        .review-post div.caption {
+            text-align: center;
+            margin-bottom: 1em !important;
+        }
+        
+        .review-post ul li {
+            padding: 0px !important;
+        }
+        
+        .review-post div.footnote ~ h2 {
+            margin-top: 1em;
+        }
+        
+        .review-post div.footnote ~ h3 {
+            margin-top: 1em !important;
+        }
+        
+        .review-post div.footnote ~ h4 {
+            margin-top: 1em;
+        }
+        
+        .review-post a.noteref {
+            vertical-align: super;
+        }
+        
+        pre.list {
+            background-color: #def;
+            border: 2px dotted;
+            padding: 4px;
+        }
+        
+        .review-post div.column {
+            margin: 8px;
+            padding: 12px;
+            background-color: #eeeeee;
+            border-radius: 4px;
+        }
+        
+        @media only screen and (min-width:720px) {
+            nav {
+                display: block;
+                width: 188px;
+                float: left;
+            }
+        }
+        
+        @media only screen and (max-width:719px) {
+            nav {
+                display: none;
+            }
+        }
+    </style>
+    <noscript>
+        <style amp-boilerplate>
+            body {
+                -webkit-animation: none;
+                -moz-animation: none;
+                -ms-animation: none;
+                animation: none
+            }
+        </style>
+    </noscript>
+</head>
+
+<body>
+    <div class="content-wrapper">
+        <div class="header-img">
+            <amp-img media="(max-width: 649px)" src="/res/logo.svg" width=90 height=17></amp-img>
+            <amp-img media="(min-width: 650px)" src="/res/logo.svg" width=160 height=30></amp-img>
+            &gt; <a href="#">FPGA</a>
+        </div>
+        <h1 class="subject">PetaLinuxで手軽にZynq(MicroZed)用カスタムLinuxを作る</h1>
+        <div class="content review-post">
+            <h2><span class="secno"></span>PetaLinuxとは何なのか</h2>
+            <p>私の現時点でのPetaLinux認識は次のとおりです。</p>
+            <p><b>Xilinxが提供しているカスタムLinux構成管理ツール兼カーネル・rootfsビルダー。標準のYocto Linux向けビルドツールチェーンに手を加えてXilinx SoC向けの各種コンフィグを追加したり、bitbakeコマンド体系をラップして扱ってくれたり、Yocto向けの適切なレシピ管理あたりまでやってくれるもの。Vivadoが生成するハードウェア定義を利用し、当該ハードウェア向けLinux一式の構築から各種媒体への一次デプロイメントまである程度カバーする。</b></p>
+
+            <h2><span class="secno"></span>PetaLinuxの基本をざっと把握する</h2>
+            <p>Xilinxのドキュメントをひたすら読んでいくのが良いです。</p>
+            <p>私はUG980→1156→1157→1144という順でざっと読んでいきました。順序はドキュメント一覧(
+                <a href="https://www.xilinx.com/support/documentation-navigation/design-hubs/dh0016-petalinux-tools-hub.html"
+                    class="link">https://www.xilinx.com/support/documentation-navigation/design-hubs/dh0016-petalinux-tools-hub.html</a>)を眺めてクイックスタートガイド→ワークフローのチュートリアル→コマンドリファレンス→リファレンスガイドと適当に決めましたが、結果的に割と良い順だったと思うのでおすすめです。</p>
+            <ul>
+                <li>
+                    <a href="http://www.xilinx.com/support/documentation/sw_manuals/petalinux2014_2/ug980-petalinux-board-bringup.pdf"
+                        class="link">PetaLinux Tools User Guide / Board Bringup Guide / UG980 (v2014.2) June 3</a>
+                </li>
+                <li>
+                    <a href="https://www.xilinx.com/support/documentation/sw_manuals/xilinx2016_4/ug1156-petalinux-tools-workflow-tutorial.pdf"
+                        class="link">PetaLinux Tools Documentation / Workflow Tutorial / UG1156 (v2016.4) December 14</a>
+                </li>
+                <li>
+                    <a href="https://www.xilinx.com/support/documentation/sw_manuals/xilinx2016_4/ug1157-petalinux-tools-command-line-guide.pdf"
+                        class="link">PetaLinux Tools Documentation / PetaLinux Command Line Reference / UG1157 (v2016.4) December 14</a>
+                </li>
+                <li>
+                    <a href="https://www.xilinx.com/support/documentation/sw_manuals/xilinx2016_4/ug1144-petalinux-tools-reference-guide.pdf"
+                        class="link">PetaLinux Tools Documentation / Reference Guide / UG1144 (v2016.4) December 14</a>
+                </li>
+            </ul>
+            <p>本エントリの最後におまけとして、私が読んでいった中でのメモを簡単に残しています。</p>
+
+            <h2><span class="secno"></span>PetaLinuxのビルド環境を作る</h2>
+            <p>ホスト(コンパイル)環境にはUbuntu 16.04を利用します。古いバージョンのPetaLinux SDKは古いバージョンのUbuntu上で利用したほうが良さそうですが、基本的に最新版を使っていきたいのでこのようにしました。</p>
+
+            <h3><span class="secno"></span>必要なパッケージの導入</h3>
+            <p>今回ビルドに使った環境は元々Yocto Linuxのビルド環境を構築していたので、その際に導入したパッケージを下敷きにしています。
+                <a href="https://www.ibm.com/developerworks/jp/linux/library/l-yocto-linux/"
+                    class="link">Yocto Project を使用して組み込み用のカスタム Linux ディストリビューションを作成する</a>の「リスト 3. Ubuntu で必要なパッケージのインストール」を最初に導入しました。ものによっては不要なはずです。その後はUG1144の表1-3に従って不足分を補うのが良いかと思います。</p>
+            <p>PetaLinuxのSDKインストール時点で最低限のパッケージが不足していればハネられるのですが、アーカイブ(5GB超、バージョンによっては7GB)のチェックサム検証→展開→...の後に依存関係チェックがおこなわれるので、失敗すると最初からやり直しで時間がかかって厳しいです。</p>
+            <p>後述する事情によりPetaLinux 2016.2を使う必要が生じたので、</p>
+            <p><a href="http://japan.xilinx.com/support/answers/67503.html" class="link">AR# 67503 / 2016.2 PetaLinux - PetaLinux インストールで 32 ビット互換ライブラリのインストールが求められる</a></p>
+            <blockquote>
+                <p>2016.1 および 2016.2 バージョンの Petalinux インストールに対しては、32 ビット依存ライブラリが必要となります。</p>
+            </blockquote>
+            <p>ということで、通常インストール状態のUbuntu 16.04でそのままビルドを通すのは無理です。このページも参考にしつついくつかパッケージを導入しました。なお、Ubuntu 16.04ではここに書かれているlib32bz2-1.0自体存在しないようで、ビルド上も問題は無かったので多分不要です。</p>
+            <p>また、</p>
+            <div class="cmd-code">
+                <pre class="cmd">sudo apt-get install bc lib32ncurses5 lib32tinfo5
+</pre>
+            </div>
+            <p>として追加いくつかインストールしておきました。</p>
+            <p>さもないと次のようなエラーで苦しむことになります。</p>
+            <div class="cmd-code">
+                <pre class="cmd">[INFO ] build zynq_fsbl
+[ERROR] make[3]: *** [xqspips.o] Error 1
+[ERROR] make[2]: *** [ps7_cortexa9_0/libsrc/qspips_v3_3/src/make.libs] Error 2
+[ERROR] make[1]: *** [build] Error 255
+</pre>
+            </div>
+
+            <h3><span class="secno"></span>dash村からの脱出</h3>
+            <p>PetaLinuxは/bin/shがbashであることを期待するので、dashをbashに戻す作業が必要です。手元では<b>sudo dpkg-reconfigure dash</b>を使いました。</p>
+
+            <h3><span class="secno"></span>ロケールをゴリッと変更する</h3>
+            <p>日本語ロケールで無邪気にPetaLinuxビルドを進めると次のようなエラーで終了します。</p>
+            <div class="cmd-code">
+                <pre class="cmd">[INFO ] install linux/kernel
+[ERROR] ERROR: Invalid ELF file '/home/muo/mz_7010_2016_2/images/linux/vmlinux'
+[ERROR] make[1]: *** [package-subsystem-FIT] Error 255
+</pre>
+            </div>
+            <p><a href="https://forums.xilinx.com/t5/Embedded-Linux/Petalinux-2015-2-Invalid-ELF-file-vmlinux/td-p/659064" class="link">https://forums.xilinx.com/t5/Embedded-Linux/Petalinux-2015-2-Invalid-ELF-file-vmlinux/td-p/659064</a></p>
+            <blockquote>
+                <p>petalinux-build parses the output of readelf to check generated kernel format.</p>
+            </blockquote>
+            <p>うわぁぁ…。ひどい。</p>
+            <p>特に必要のない日本語ロケールを、macOSからSSHでログインした場合にUTF8系ロケールが求められる警告メッセージがうるさいという理由でlocale-genやっていた結果がこれなので報われない。例によってMacからSSHだとアレしてソレみたいな問題があるので、<a
+                    href="http://yano3.hatenablog.jp/entry/2012/11/25/234244" class="link">http://yano3.hatenablog.jp/entry/2012/11/25/234244</a>の結果を丸ごと~/.bashrcに書きました(もちろん~/.bash_profileでも良いでしょう)。あとはSSH入り直してok。</p>
+
+            <h2><span class="secno"></span>PetaLinux SDKを導入する</h2>
+            <p>PetaLinux SDKは
+                <a href="https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/embedded-design-tools/2016-4.html"
+                    class="link">https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/embedded-design-tools/2016-4.html</a>このあたりから入手しますが、Xilinx
+                    SDKとは違ってWebインストーラがありません。</p>
+            <p>つまり、v2016.4の場合は8.34GBをごっそりダウンロードしてインストールするほかありません。</p>
+            <p>後述しますが、MicroZedをターゲットボードとする場合にはv2016.4をインストールしてはいけません。2016.2を選択する必要があります。2016.2はたった5.5GBで済みます、よかったですね(なお私は両方ダウンロードしました)。</p>
+            <p>PetaLinuxで諸々のLinuxイメージを生成する範囲ではXilinx SDK不要だと思いますが、必要そうならインストールしましょう。</p>
+
+            <h2><span class="secno"></span>PetaLinuxでMicroZed向けのLinux一式を構築する</h2>
+            <p>事前に読んでおいたドキュメントに従ってBSPからプロジェクトを生成します。</p>
+            <p>MicroZedのBSPは<a href="http://zedboard.org/support/design/1519/10" class="link">http://zedboard.org/support/design/1519/10</a>でひっそりと配布されているので入手します(Avnetの会員登録が必要)。MicroZed
+                7010/7020ともに最新版は2016.2用、と書かれています。</p>
+
+            <h3><span class="secno"></span>PetaLinuxプロジェクトを生成する</h3>
+            <div class="cmd-code">
+                <pre class="cmd">$ petalinux-create -t project -s mz_7010_2016_2.bsp
+</pre>
+            </div>
+            <p>これだけですね。mz_7010_2016_2というディレクトリにプロジェクトが生成されます。この名前は変更して構わないのかな…。</p>
+
+            <h3><span class="secno"></span>PetaLinuxをひとまずビルドす・・・る?</h3>
+            <p>まずはビルドしてみましょう。</p>
+            <div class="cmd-code">
+                <pre class="cmd">$ petalinux-build
+WARNING: Your PetaLinux project was last modified by PetaLinux SDK version &quot;2016.2&quot;,
+WARNING: however, you are using PetaLinux SDK version &quot;2016.3&quot;.
+Please input &quot;y&quot; to continue. Otherwise it will exit![n]
+</pre>
+            </div>
+            <p>おう2016.3なんてSDKしらねーけど大丈夫か?と聞かれます<a id="fnb-sdk-2016-3" href="#fn-sdk-2016-3" class="noteref" epub:type="noteref">*1</a>。力強く<b>y</b>と返します。</p>
+            <div class="cmd-code">
+                <pre class="cmd">y
+INFO: Checking component...
+ERROR: Cannot find XLNX__4___4 of linux-kernel
+INFO: Generating make files and build linux
+INFO: Generating make files for the subcomponents of linux
+ERROR: Cannot find XLNX__4___4 of linux-kernel
+ERROR: Failed to get subcomponents for linux
+ERROR: Failed to build linux! Failed to get makefiles for subcomponents of linux!
+</pre>
+            </div>
+            <p>全然大丈夫じゃありませんでした。</p>
+            <p>これはどうあがいてもPetaLinux SDK 2016.3以上でビルドを通すのは無理なので、PetaLinux SDK 2016.2をインストールしました。PetaLinux SDKは相当巨大でダウンロードから面倒なのにやり直しなの大変苦しいです。</p>
+            <p>ZedboardはPetaLinux SDKの各バージョンローンチに合わせて
+                <a href="https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/embedded-design-tools/2016-4.html"
+                    class="link">https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/embedded-design-tools/2016-4.html</a>でBSPを配布してもらえるのにMicroZedには無い…。仕方ない、売れてない?のが悪いんや。大人はみんなそうや…
+                    正論いやいいと思ってやがる…</p>
+            <p>ということで、実は
+                <a href="https://forums.xilinx.com/t5/Embedded-Development-Tools/Error-when-creating-first-SDK-project-after-installation-of/td-p/643937"
+                    class="link">https://forums.xilinx.com/t5/Embedded-Development-Tools/Error-when-creating-first-SDK-project-after-installation-of/td-p/643937</a>に、なんやビルドが失敗して辛いという話がありまして、このあたりを参考にして適宜パッケージを導入しましょう。</p>
+            <div class="footnote" epub:type="footnote" id="fn-sdk-2016-3">
+                <p class="footnote">[*1] ちなみに最新版の2016.4を使わず2016.3を使っていたのは、SDSoCの最新が2016.3でそれにあわせたためです</p>
+            </div>
+
+            <h2><span class="secno"></span>PetaLinux SDK 2016.2でMicroZed用Linuxをビルドする</h2>
+            <p>気を取り直してもう一度。念のためさきのプロジェクトディレクトリは削除してBSPから生成し直し、ビルドコマンドを実行します。</p>
+            <div class="cmd-code">
+                <pre class="cmd">$ petalinux-build
+</pre>
+            </div>
+            <p>今度は通りました。最後にTFTP用(ネットワークブート用かな)のファイル書き出しに失敗した旨のエラーが出るので、指定ディレクトリを<b>sudo mkdir</b>で掘っておくと次回から安心ですね。なお、あっさり通った風に書いていますが、実際は本エントリの序盤にまとめた依存パッケージやらロケールやらの問題でずいぶん遠回りをしました。</p>
+            <div class="cmd-code">
+                <pre class="cmd">$ petalinux-boot --qemu ...
+</pre>
+            </div>
+            <p>でQEMU上での実行を確認した感じ、ざっくりいけてそうです。rootで入ってhaltまで確認しました。</p>
+            <p>halt後にQEMUは自動終了してくれない(内部管理コマンドがあった気がしますが覚えていません)ので、tmuxで専用シェルを立ち上げて実行し、終わったら画面1枚丸ごと閉じる運用をしています。</p>
+
+            <h2><span class="secno"></span>ビルドするLinuxに含めるパッケージをカスタマイズする</h2>
+            <p>カスタムしてこそYocto Linux、簡単にカスタムできてこそPetaLinuxです。</p>
+            <p><b>petalinux-config</b>コマンドを実行して表示されるメニューは階層化されていますが、サブメニュー内の詳細設定、たとえばrootfsに含めるパッケージの選択は<b>petalinux-config -c rootfs</b>は-c
+                rootfsで明示しないと入れません。</p>
+            <p>全体コンフィグを抜けると後処理諸々(FSBL用のBSP生成とか)が走るので時間かかります。なお、-c rootfsで実行した画面を抜けると無言で時間かかるのでkill -KILLしそうになりますが、1分程度待っていればちゃんと抜けるので我慢しましょう。</p>
+            <p>さて、手元ではQtのベースパッケージとexamples、fontあたりを含めてビルドしてみました。</p>
+            <p>Qt込みにするとrootfs.cpioが順当に膨らみます。</p>
+            <div class="cmd-code">
+                <pre class="cmd">-rw-rw-r--  1 muo  staff  11540480  1 14 22:57 rootfs.cpio
+-rw-rw-r--  1 muo  staff  73434112  1 15 07:10 rootfs.cpio
+</pre>
+            </div>
+            <p>導入するパッケージ量にともなって肥大化するrootfsをどこに置くかは悩ましい問題です。SDカード上の別パーティションへ書き出す筋がスタンドアロン動作面で良いのですが、開発中は何かと面倒です。MicroZedが安定してネットワークにつながる状態ではNFSもよさそうですが、メモリを1GB積んでいるのがこのボードの良いところでもあるので、ひとまず100MBぐらいまではinitramfsでいくつもりです。</p>
+
+            <h2><span class="secno"></span>PetaLinuxに関する所感</h2>
+            <p>よさそうです。Yoctoのbitbakeを直接触るよりもエラー出力が少なめな分、トラブルシュートをやりづらいと感じますが、間口を広くしたりプロジェクト内での部分オーバーラップしつつの分業体制をうまく回していくのに向いている設計だと感じました。</p>
+            <p>MicroZedのBSPが2016.2までしか提供されていない点については、差し当たり大きな問題がないこと、そろそろMPSoC時代の安価な評価ボードも出てくるであろうことから、そんなもんかなと思っています。2013年発売のボードですし、あと1年ぐらい色々と使い倒して乗り換えるぐらいのノリでいればいいと思います。</p>
+
+            <h2><span class="secno"></span>各種の関連FAQ</h2>
+            <p>PetaLinuxをさらさらと使っていく上で読んだFAQエントリを簡単にまとめておきます。何かの役に立つかもしれません。</p>
+
+            <h3><span class="secno"></span>ツールチェーンの差し替え</h3>
+            <p><a href="http://www.xilinx.com/support/answers/59553.html" class="link">AR# 59553 / PetaLinux 2013.10 - Can I Use A Cross-Compiler Other Than the Built-In CodeSourcery Tools</a>を読むと</p>
+            <blockquote>
+                <p>I would like to use a cross-compiler other than the default toolchain included with PetaLinux.  Is this possible?</p>
+            </blockquote>
+            <p>に対して、環境変数指定で内部のツールチェーンを部分的に差し替えられると書いています<a id="fnb-code-sourcery" href="#fn-code-sourcery" class="noteref" epub:type="noteref">*2</a>。</p>
+            <div class="footnote" epub:type="footnote" id="fn-code-sourcery">
+                <p class="footnote">[*2] そういえば<a href="http://www.wiki.xilinx.com/Install+Xilinx+Tools" class="link">http://www.wiki.xilinx.com/Install+Xilinx+Tools</a>でZynq
+                    7000用に紹介されているツールチェーン、Code Sourcery版とlinaro版などの差が分かっていないので、そのうち調べようと思います。単純にsoftfpuとhardfpu利用の差だけなのかな</p>
+            </div>
+
+            <h3><span class="secno"></span>Linuxを指定Gitリポジトリからビルドする方法</h3>
+            <p>Xilinxのlinux-xlnxリポジトリから派生させて手を加えたGitリポジトリのコードを使いたい場合、などの話だと思います。</p>
+            <p><a href="http://www.xilinx.com/support/answers/60406.html" class="link">AR# 60406</a>を読むと</p>
+            <blockquote>
+                <p>PetaLinux 2013.10 and later support the ability to retrieve source code for the Linux kernel or UBOOT from
+                    a Git repository.  How do I use this feature in my design workflow?</p>
+            </blockquote>
+            <p>に対して<b>petalinux-config</b>で実行するメニュー内での操作方法が書かれています。</p>
+
+            <h3><span class="secno"></span>PetaLinuxの生成するデバイスツリーファイル(DTS/DTSI)にイーサネットのPHYやMDIOの情報が含まれない</h3>
+            <p><a href="http://www.xilinx.com/support/answers/61117.html" class="link">AR# 61117 / PetaLinux - My System Device Tree DTS Does Not Include Ethernet PHY Information</a></p>
+            <p>質問はタイトルどおりなので省略し、これに対する答えが</p>
+            <blockquote>
+                <p>Ethernet PHY information is board level and board-specific information that PetaLinux does not have access
+                    to without user input.</p>
+            </blockquote>
+            <p>ということなんだけど、イマイチ腑に落ちてない…。system-top.dtsもPetaLinuxが生成していけない理由がないように思う(PetaLinuxのプロジェクト生成時点でBSPを読み込んでいるので、ターゲットボードもそのハードウェア構成も分かっているはず)し、petalinux-configの設定画面中にもPHY設定あったような?見間違いかもしれないので、そのうちこのあたりに触れる段になったらもう一度確認してみます。</p>
+
+            <h2><span class="secno"></span>PetaLinux関連のUGめぐり読みメモ</h2>
+            <p>よく分かっていない状態から段々と全容が掴めていくまでが見て取れるメモです。</p>
+
+            <h3><span class="secno"></span>UG980(Board Bringup Guide)</h3>
+            <ul>
+                <li>諸々ビルドして、bitstream生成も込みでボード上で起動するまでが書いてある</li>
+                <li>おまけとしてシステム構成のコンフィグ方法も書いてあるっぽいのが良い</li>
+                <li>prerequisites部分にシリアルコンソール用のUARTは必須とあるけど本当かなこれ</li>
+                <li>Vivadoからexport hardwareでhardware description fileができる</li>
+                <li>PetaLinux toolsから.dtsやu-bootイメージを生成できる</li>
+                <li>petalinux-createでtemplateにできるのは、ドキュメント上zynqとmicroblazeだけだった
+                    <ul>
+                        <li>今ならMPSoCとか増えてるんだろうけど、ドキュメントがちょい古い</li>
+                    </ul>
+                </li>
+                <li>petalinux-createは-t projectでプロジェクト作れるけど、-t appsならアプリ作れる
+                    <ul>
+                        <li>想定よりも広範囲かな、と思ったけれど ビットストリーム生成まではみ出してはいかないので想定のうち</li>
+                    </ul>
+                </li>
+                <li>--get-hw-descriptionという不思議オプションがある
+                    <ul>
+                        <li>これ毎回mz7010指定するやつ?</li>
+                    </ul>
+                </li>
+                <li>petalinux-configからシステム構成設定へと進める
+                    <ul>
+                        <li>用途とても広い: &quot;If you want to do advanced PetaLinux project configurations such as enabling some
+                            kernel options, modifying the default flash partition table settings and so on, or you just want
+                            to view the current configuration, you can run petalinux-config to do so.&quot;</li>
+                    </ul>
+                </li>
+                <li>petalinux-config -c kernelでカーネルのみの設定を開けるらしい
+                    <ul>
+                        <li>同-c rootfsでrootfsをいじれる</li>
+                        <li>ここに追加パッケージ入れるとかやれそうな気がするけど、そこらは直接Yoctoのレイヤを触る感じなのかな</li>
+                    </ul>
+                </li>
+                <li>その後にpetalinux-buildを走らせるとLinux本体(つまりカーネル)とrootfsをビルドしてくれるとある</li>
+                <li>Zynqの場合、petalinux-package --boot ...を使って.binフォーマットにまとめると
+                    <ul>
+                        <li>先日触ったXilinx向けYoctoの構成でも、このへんまで<b>bitbake petalnux-build</b>でやってくれてる気がする。用途の切り分けがよくわからない
+                            <ul>
+                                <li>気持ちの話をすると、Yoctoのbitbake系とPetaLinux SDKでのpetalinux-*コマンド群はiterativeに混ぜて使えてほしい</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li>autoconfigに期待するやつ
+                    <ul>
+                        <li>&quot;If a component is selected to enable autoconfig, when petailnux-config is run, its config files
+                            will be auto updated based on the top system level settings. ... device tree autoconfig is enabled,
+                            when petalinux-config runs, the kernel config file &lt;project-root&gt;</li>
+                    </ul>
+                </li>
+            </ul>
+            <p>/subsystems/linux/configs/kernel/config will be auto updated with the top system level settings.&quot;とあって期待を持てる***
+                autoconfigどれぐらい選択肢あるんだろう。頑張ってほしい</p>
+
+            <h3><span class="secno"></span>UG1156(Workflow Tutorial)</h3>
+            <ul>
+                <li>&quot;1-1: Design Flow Overview&quot;部分がとてもきれいに役割分担と共にまとまっていて良い。そのまま抜粋
+                    <ul>
+                        <li>Design Flow Step Tool / Workflow</li>
+                        <li>Hardware Platform Creation Vivado</li>
+                        <li>Create PetaLinux Project
+                            <ul>
+                                <li>petalinux-create -t project</li>
+                            </ul>
+                        </li>
+                        <li>Initialize PetaLinux Project
+                            <ul>
+                                <li>petalinux-config --get-hw-description</li>
+                            </ul>
+                        </li>
+                        <li>Configure System-Level Options
+                            <ul>
+                                <li>petalinux-config</li>
+                            </ul>
+                        </li>
+                        <li>Create User Components
+                            <ul>
+                                <li>petalinux-create -t COMPONENT</li>
+                            </ul>
+                        </li>
+                        <li>Configure the Linux Kernel
+                            <ul>
+                                <li>petalinux-config -c kernel</li>
+                            </ul>
+                        </li>
+                        <li>Configure the Root Filesystem
+                            <ul>
+                                <li>petalinux-config -c rootfs</li>
+                            </ul>
+                        </li>
+                        <li>Build the System
+                            <ul>
+                                <li>petalinux-build</li>
+                            </ul>
+                        </li>
+                        <li>Deploy the System
+                            <ul>
+                                <li>petalinux-package</li>
+                            </ul>
+                        </li>
+                        <li>Test the System
+                            <ul>
+                                <li>petalinux-boot</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li>気持ち伝わってきたので、あとは全力で飛ばし読み
+                    <ul>
+                        <li>配布されてるボード用BSPもpetalinux-buildでビルドしてみるところからスタートするのが良さそう
+                            <ul>
+                                <li>Makefileあるけど、直接makeじゃなかったんや…</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li>&quot;This step will generate a device tree DTB file, a first stage bootloader (if selected), U-Boot, the
+                    Linux kernel, and a root filesystem image. Finally, it will generate the necessary boot images.&quot;
+                    <ul>
+                        <li>大事</li>
+                        <li>これでimages/.../image.ubが出て来る。これはFITイメージ?というものらしい</li>
+                    </ul>
+                </li>
+                <li>リビルドしたらQEMUで試そうな、という優しさ</li>
+                <li>そしてこういう丁寧版も書いてある
+                    <ul>
+                        <li>1. Change to your project directory and boot the prebuilt linux kernel image: $ petalinux-boot --qemu
+                            --prebuilt 3</li>
+                        <li>The --qemu option tells petalinux-boot to boot QEMU, instead of real hardware via JTAG, and the --prebuilt
+                            3 boots the linux kernel.</li>
+                    </ul>
+                </li>
+                <li>デフォルトのログイン情報はID: root、PW: root
+                    <ul>
+                        <li>意外とハマるやつだ</li>
+                    </ul>
+                </li>
+                <li>petalinux-bootだけはWindows環境から叩けるようにしておかないと困らない??と思うんだけど、ひょっとすると無いのかこれ
+                    <ul>
+                        <li>JTAGアクセス部分だけLinuxからやるとか微妙に不毛な気がするな...?</li>
+                    </ul>
+                </li>
+                <li>QEMUの章
+                    <ul>
+                        <li>The --kernel option is used to boot the project’s most recently built Linux image. For Microblaze,
+                            it is &quot;&lt;plnx-proj-root&gt;/images/linux/image.elf&quot;. For Zynq, it is &quot;&lt;plnx-proj-root&gt;/images/
+                            linux/zImage&quot;.
+                            <ul>
+                                <li>なるほど。微妙にわかりづらい挙動やな</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li>p.29にちょっと面白いのがあった: &quot;Anatomy of a PetaLinux Project&quot;</li>
+                <li>続いてp.30。Yoctoだ!!!! となった</li>
+                <li>CAUTION! &quot;&lt;plnx-proj-root&gt;/build/&quot; is automatically generated. Do not manually edit it. Contents
+                    in this directory will get updated when you run petalinux-config or petalinux-build. &quot;&lt;plnx-proj-root&gt;/images/&quot;
+                    is automatically generated and managed. Files in this directory will get updated when you run petalinux-build.
+                    <ul>
+                        <li>あっ、そういうことなの</li>
+                        <li>若干きな臭い? 個別のパッケージ管理などはあくまでもbuild/conf/以下のファイルで制御しろということか、それすらも触るなということなのか
+                            <ul>
+                                <li>petalinux-configでインストールするrpmパッケージを選べるようになってたら特に文句はないんだけど、どこまで細かくいじれるんだろう(注: その後、petalinux-createで割となんとかなりそうな気がしてきた)</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li>p.31-32にも各構成ファイルの役割が書かれていて、そのうち戻ってくるとお得な感じがする</li>
+            </ul>
+
+            <h3><span class="secno"></span>UG1157(PetaLinux Command Line / Reference)</h3>
+            <ul>
+                <li>単純にコマンドのリファレンスだと思う
+                    <ul>
+                        <li>全体の流れが分かってきているので、流し読みぐらいで良いはず</li>
+                    </ul>
+                </li>
+                <li>petalinux-config -c rootfsからパッケージ選択いける気がしてきた
+                    <ul>
+                        <li>https://www.beyond-circuits.com/wordpress/tutorial/tutorial25/ このへんのスクショ見る感じ、パッケージ選択がある</li>
+                    </ul>
+                </li>
+                <li>あと問題は、手元の~/build/環境に放り込んであるrecipesをpetalinux-config系にどうやって取り込むか
+                    <ul>
+                        <li>環境変数設定(setupsdk?)だけでいい感じにそっちを見に行ってくれるのならとても嬉しい</li>
+                    </ul>
+                </li>
+                <li>bitbake petalinux-imageとかpetalinux-*とついてるレシピ?が何をやってるのか気になるので読もう
+                    <ul>
+                        <li>リポジトリはそこらに生えてるはずなので読みに行けるはず</li>
+                        <li>逆に、petalinux-*の無印コマンドを呼んだ際にbitbakeを内部で呼んでるオチだったらシャンシャンとなる</li>
+                    </ul>
+                </li>
+                <li>petalinux-create -t COMPONENTというのが出てきた
+                    <ul>
+                        <li>なんだろうこれ</li>
+                    </ul>
+                </li>
+                <li>&quot;The petalinux-create -t COMPONENT command allows you to create various components within the specified
+                    PetaLinux project. These components can then be selectively included or excluded from the final system
+                    by toggling them using the petalinux-config -c rootfs workflow. There are no component-specific options
+                    for the petalinux-create -t modules workflows.&quot;
+                    <ul>
+                        <li>つまり例の.bbファイル相当のもの+そのカタログ管理用ラッパーなのかな</li>
+                    </ul>
+                </li>
+                <li>例示
+                    <ul>
+                        <li>Create an application component that is enabled in the root filesystem.</li>
+                        <li>$ petalinux-create -t apps -n &lt;NAME&gt; --enable</li>
+                        <li>Create a new install-only application component. In this flow, nothing is compiled.</li>
+                        <li>$ petalinux-create -t apps -n &lt;NAME&gt; --template install</li>
+                    </ul>
+                </li>
+                <li>ふーむ</li>
+                <li>ATFはARM Trusted Firmwareということで例のsecure-bootやらTrustZoneやらの系統かー</li>
+                <li>Yoctoへの言及
+                    <ul>
+                        <li>&quot;Introduction: PetaLinux is a development and build environment which automates many of the
+                            tasks required to boot embedded Linux on Xilinx AP SoC’s and FPGA’s. It uses Yocto Project underneath
+                            for configuring and building various components.&quot;
+                            <ul>
+                                <li>のっけにあった</li>
+                            </ul>
+                        </li>
+                        <li>petalinux-buildにもあった
+                            <ul>
+                                <li>This tool uses the Yocto Project underneath. Whenever petalinux-build is invoked, it internally
+                                    calls bitbake. While the tool provides a single workflow, the specifics of its operation
+                                    can be dictated via the petalinux-build -c and petalinux-build -x options.</li>
+                                <li>&quot;-x, --execute&quot;の意
+                                    <ul>
+                                        <li>Execute specified build step. All yocto tasks can be passed through this option.
+                                            To get all tasks of a component use “listtasks”. This is optional.</li>
+                                    </ul>
+                                </li>
+                                <li>なるほど、ようやっと全容見えてきた</li>
+                                <li>となると、PetaLinuxのrepoで認識できる形でYoctoの一式を維持しようとすると、PetaLinux側でソースのフェッチから何からやらなきゃいかんのかな? それともsetupsdkでつないでくれる(build/で全部やる)のか</li>
+                            </ul>
+                        </li>
+                        <li>まずはpetalinux-configからのワークフローを試して慣れていくのが近道な気がする</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <h3><span class="secno"></span>UG1144(Reference Guide)</h3>
+            <ul>
+                <li>Yoctoとの絡みもちょいちょい書いてあるリファレンス</li>
+                <li>最終的にこれを片手にやっていく感じなのかな</li>
+                <li>bitbakeもちょいちょい露出してるけど、bblayersが出てこないので微妙にこれだけだと不足しそう</li>
+                <li>p.50あたりにprebuilt modulesの追加方法があった
+                    <ul>
+                        <li>要は*.bbのレシピ追加と組み込みの話なので、これが大事</li>
+                        <li>$ petalinux-create -t apps --template install --name mymodule --enable</li>
+                        <li>これでいい感じにしてくれるのか、なるほど</li>
+                        <li>--template installを与えずにこれやるとCで新規アプリを書いて組み込むテンプレートが生成される
+                            <ul>
+                                <li>こんなんわかるかー!となる</li>
+                                <li>autoconfのテンプレートもあって、まあ一貫してはいる..</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li>&quot;CAUTION! You can delete the app directory if it is no longer required. Apart from deleting the app
+                    directory, you have to remove the line: IMAGE_INSTALL_append= “myapp” from &lt;plnx-proj-root&gt;/project-spec/meta-plnx-generated/recipes-core/images/petalinux-image.bbappend.
+                    Deleting the directory by keeping the mentioned line will throw an error.&quot;
+                    <ul>
+                        <li>これでbblayersを使ってなくても問題ない理由が明らかになった</li>
+                    </ul>
+                </li>
+                <li>-t app、-t moduleとあって、それぞれテンプレートがちょいちょいあるので、使い分けは実際やるときに読み直す</li>
+                <li>原則、-t app --template installのものはビルド済みのやつ(*.ko)を単純に取り込むだけっぽい
+                    <ul>
+                        <li>もちろん他のことに使えんではないだろうけど、役割分けてる</li>
+                    </ul>
+                </li>
+                <li>p.20からのHardware Import部分もとても大事
+                    <ul>
+                        <li>ハードウェアプラットフォームと.hdfを使うとある</li>
+                        <li>これ、BSPとの絡みはどうするんだろう</li>
+                    </ul>
+                </li>
+                <li>SDSoCからPetaLinuxへ必要なものを渡してビルド、とはならないはずなので注意する
+                    <ul>
+                        <li>SDSoCはあくまでも最終地点</li>
+                        <li>カーネルとrootfsの両方を作り上げてSDカードへ書き込める状態にして、それをSDSoC側で設定して使う</li>
+                        <li>なんならBSPはSDSoC側で頑張るイメージもあるんだけど、どうだろう</li>
+                        <li>結局bitstream差し替えの都合上、BOOT.binはSDSoCが書き換えるあるいは作り直す認識でいいのかな</li>
+                        <li>カーネルとrootfsだけがPetaLinuxからの成果物として、その先は別フロー</li>
+                        <li>これまでプラットフォームをエクスポートしてせっせとPetaLinux環境で頑張っていたのが順序逆転して、下回りで必要なものやアプリを組み込んだカーネル・rootfsを先にPetaLinuxで作り、メインアプリをせっせとその上にSDSoCで構築して動作確認までサクサクやる流れ、と捉えると良さそう</li>
+                        <li>BSPの出番は更に前で、PetaLinuxのプロジェクトを作るタイミングで必要か、なるほど</li>
+                    </ul>
+                </li>
+            </ul>
+            2017/01/25 12:05
+        </div>
+        <div class="social-buttons">
+            <amp-social-share type="twitter"></amp-social-share>
+            <amp-social-share type="b-hatena" width=44 data-share-endpoint="http://b.hatena.ne.jp/append?CANONICAL_URL"></amp-social-share>
+            <amp-social-share type="facebook"></amp-social-share>
+            <amp-social-share type="gplus"></amp-social-share>
+        </div>
+        <h3 class="navigation">カテゴリ</h3>
+        <p class="content">FPGA, MicroZed, PetaLinux</p>
+        <h3 class="navigation">関連記事</h3>
+        <amp-list class="content" src="/related/dummy.json" width=300 height=100 layout=responsive items="container">
+            <template type="amp-mustache">
+                {{#items}}
+                <div>
+                    <amp-img src="{{imageUrl}}" width=50 height=50></amp-img>
+                    <a href="{{href}}">{{title}}</a>
+                </div>
+                {{/items}} {{^items}} items not found {{/items}}
+            </template>
+            <div overflow role=button aria-label="Show more" class="list-overflow">
+                Show more
+            </div>
+        </amp-list>
+        <p>Copyright &copy; Kei Nakazawa 2017, Licensed under <a href="https://creativecommons.org/licenses/by/4.0/deed.ja">CC-4.0-BY</a>            unless otherwise noted.</p>
+    </div>
+    <nav>
+        <h3 class="navigation">Popular Posts</h3>
+        <amp-list class="content" src="/data/popular.json" width=200 height=600 layout=responsive items="container">
+            <template type="amp-mustache">
+                {{#items}}
+                <div>
+                    <amp-img src="{{imageUrl}}" width=50 height=50></amp-img>
+                    <a href="{{href}}">{{title}}</a>
+                </div>
+                {{/items}}
+            </template>
+            <div overflow role=button aria-label="Show more" class="list-overflow">
+                Show more
+            </div>
+        </amp-list>
+        <h3 class="navigation">Categories</h3>
+        <amp-list class="content" src="/data/categories.json" width=200 height=400 layout=responsive items="container">
+            <template type="amp-mustache">
+                <ul>
+                    {{#items}}
+                    <li><a href="{{href}}">{{title}}</a></li>
+                    {{/items}}
+                </ul>
+            </template>
+            <div overflow role=button aria-label="Show more" class="list-overflow">
+                Show more
+            </div>
+        </amp-list>
+    </nav>
+</body>
+
+</html>
