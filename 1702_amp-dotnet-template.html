@@ -1,0 +1,305 @@
+<!doctype html>
+<html amp lang="ja">
+
+<head>
+    <meta charset="utf-8">
+    <script async src="https://cdn.ampproject.org/v0.js"></script>
+    <title>AMPと相性良い.NET向けテンプレートエンジンを探す→ひとまずDotLiquidに決める</title>
+    <link rel="canonical" href="https://notes.muo.jp/1702_amp-facebook-share.html" />
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+    <script type="application/ld+json">
+        {
+        "@context": "http://schema.org",
+        "@type": "NewsArticle",
+        "headline": "AMPと相性良い.NET向けテンプレートエンジンを探す→ひとまずDotLiquidに決める",
+        "datePublished": "2017-02-24T20:47:00Z",
+        "keywords": "foo,bar"
+        "image": [
+        ]
+      }
+    </script>
+    <script async custom-element="amp-list" src="https://cdn.ampproject.org/v0/amp-list-0.1.js"></script>
+    <script async custom-template="amp-mustache" src="https://cdn.ampproject.org/v0/amp-mustache-0.1.js"></script>
+    <script async custom-element="amp-social-share" src="https://cdn.ampproject.org/v0/amp-social-share-0.1.js"></script>
+    <style amp-custom>
+        .header-img {
+            border-bottom: 1px red solid;
+        }
+        
+        .header {
+            background-color: red;
+            color: white;
+            padding: 2px 2px 2px 6px;
+        }
+        
+        .social-buttons {
+            padding-top: 4px;
+            text-align: center;
+        }
+        
+        amp-social-share[type="b-hatena"] {
+            background-image: url(/res/hatenabookmark-logomark.svg);
+        }
+        
+        h2.navigation,
+        h3.navigation {
+            background-color: #CED6D3;
+            margin-left: 6px;
+            margin-bottom: 0px;
+            padding-left: 16px;
+            width: 160px;
+            border-radius: 50px 50px 0 0;
+        }
+        
+        .content {
+            margin: 0 6px 0px 6px;
+            padding: 8px 4px 8px 4px;
+            border-radius: 0 0px 2px 2px;
+            background-color: #DFE5E8;
+        }
+        
+        h1.subject {
+            font-size: 1.5em;
+        }
+        
+        div.content-wrapper {
+            text-align: left;
+        }
+        
+        .review-post pre.cmd {
+            overflow: auto;
+            padding: 8px;
+            background-color: black;
+            color: #ffffff;
+        }
+        
+        .review-post pre.emlist {
+            overflow: auto;
+            margin: 8px;
+            background-color: #f9f9f9;
+        }
+        
+        .review-post tt.inline-code {
+            font-weight: bold;
+        }
+        
+        .review-post br {
+            margin: 0px 0px 12px 0px;
+            display: block;
+            content: " ";
+        }
+        
+        .review-post h2,
+        .review-post h3,
+        .review-post h4 {
+            color: #757EFF;
+            border-bottom: 1px solid #000;
+            padding-bottom: 0.1em;
+        }
+        
+        .review-post h2 {
+            font-size: 1.5em;
+        }
+        
+        .review-post h3 {
+            font-size: 1.2em;
+        }
+        
+        .review-post h4 {
+            font-size: 1.1em;
+        }
+        
+        .review-post.image p.caption {
+            text-align: center;
+            margin-bottom: 1em;
+        }
+        
+        .review-post ul li {
+            padding: 0px;
+        }
+        
+        .review-post div.footnote ~ h2 {
+            margin-top: 1em;
+        }
+        
+        .review-post div.footnote ~ h3 {
+            margin-top: 1em;
+        }
+        
+        .review-post div.footnote ~ h4 {
+            margin-top: 1em;
+        }
+        
+        .review-post a.noteref {
+            vertical-align: super;
+        }
+        
+        pre.list {
+            background-color: #def;
+            border: 2px dotted;
+            padding: 4px;
+        }
+        
+        .review-post div.column {
+            margin: 8px;
+            padding: 12px;
+            background-color: #eeeeee;
+            border-radius: 4px;
+        }
+        
+        @media only screen and (min-width:1119px) {
+            nav {
+                display: block;
+                width: 188px;
+                float: left;
+            }
+        }
+        
+        @media only screen and (max-width:1118px) {
+            nav {
+                display: none;
+            }
+        }
+
+        body {
+            background-color: #E4ECEF;
+            color: #202121;
+        }
+
+        .image {
+          width: 60%;
+          display: block;
+          margin-left: auto;
+          margin-right: auto;
+        }
+    </style>
+<style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+</head>
+
+<body>
+    <div class="content-wrapper">
+        <div class="header-img">
+            <amp-img media="(max-width: 649px)" src="/res/logo.svg" width=90 height=17></amp-img>
+            <amp-img media="(min-width: 650px)" src="/res/logo.svg" width=160 height=30></amp-img>
+            &gt; <a href="#">AMP</a>
+        </div>
+        <h1 class="subject">AMPと相性良い.NET向けテンプレートエンジンを探す→ひとまずDotLiquidに決める</h1>
+        <div class="content review-post">
+
+<p>お読み頂いているこのblogはAMP版のみで構成されており、いわゆる通常版のページが存在しません<a id="foobarfnb-same-canonical-uri" href="#fn-same-canonical-uri" class="noteref" epub:type="noteref" xmlns:epub="http://www.idpf.org/2007/ops">*1</a>。</p>
+<p>blogの元データはRe:VIEWで作成しているため、出力までの間になにかしらのテンプレートエンジンが必要です。大層な置換作業をやるわけじゃないし、そんなのなんでもいいじゃないかと思わないでもないのですが、やはり不便な箇所が色々と出てくるためそうもいきません。</p>
+<p>テンプレートエンジンを雑に選ぶと後で苦労する(経験上)ので、ざっと選定条件を決めて選んでみました。</p>
+
+<h2><span class="secno"></span>条件</h2>
+<ul>
+<li>.NET Coreでさらっと使えること<ul>
+<li>今回わりと重視したのがこれ。blog記事の変換ツールはC#でサラサラと書けることを前提とするため、.NETで(C#から)簡単に利用できるものを選んだ</li>
+<li>Jekyllは割と重いと聞いているし、完全に趣味のものをRubyでゴリゴリやる元気もないので.NETでいく</li>
+<li>まあいろいろやって飽きてきたらJS(Node.js)筋に寄せてビルドという方針も普通にアリだと思う。まずは書きたいように作る</li>
+</ul>
+</li>
+<li>外部依存が多すぎないこと<ul>
+<li>依存関係で20-30個のパッケージを芋づる式に拾ってくるのはなんというかno thank you</li>
+</ul>
+</li>
+<li>なるべく「よくある」書式であること<ul>
+<li>「ぼくのかんがえたさいきょうのテンプレートエンジン」である必要はない。むしろ、それなりに方言は許容できますがなるべく可搬性の高い記述様式で書けることを期待する</li>
+</ul>
+</li>
+<li>あまりリッチすぎないこと<ul>
+<li>ひとつ前の条件に近いところ。あまりリッチすぎる書式を選ぶとあとあと大変なので、若干不便なぐらい絞り込まれた機能セットのもののほうが良い</li>
+</ul>
+</li>
+</ul>
+<div class="footnote" epub:type="footnote" id="foobarfn-same-canonical-uri" xmlns:epub="http://www.idpf.org/2007/ops"><p class="footnote">[*1] つまり、ヘッダ内のcanonical URI指定がAMP版のページ自体を指しています</p></div>
+
+<h2><span class="secno"></span>書式はliquidあたりがまあ無難→DotLiquid</h2>
+<p>RazorEngineはなんというかT4系の用途に振りまくっている上にnetcoreappで扱えないので無しとしました。もう2-3探したんですが、きっちり評価する前に心が折れてきたので適当に<a href="http://dotliquidmarkup.org/" class="link">DotLiquid</a>を使ってみることにしました。</p>
+<p>DotLiquidは、その名のとおり.NETで使えるliquid系のテンプレートエンジンです。liquidはそれなりに組み込み演算子などが充実しており、そこそこ仕様をカバーして実装するのが面倒そうなのですが、DotLiquidは割と頑張ってほとんどのケースを実装しているようです。<a href="https://github.com/dotliquid/dotliquid/issues" class="link">issues</a>を眺めてみるとそれなりに非対応のエッジケースがありそうですが、きっと自分が踏むことはないので安心しておきます(フラグ)。</p>
+
+<h2><span class="secno"></span>DotLiquidのよいところ</h2>
+<ul>
+<li>外部依存無しでそれなりのliquid構文を利用できること<ul>
+<li>普通に書いたら普通にビルドできる</li>
+</ul>
+</li>
+</ul>
+
+<h2><span class="secno"></span>DotLiquidのイマイチなところ</h2>
+
+<h3><span class="secno"></span>メンテナが心折れている</h3>
+<p>もう1年弱ぐらい<a href="https://github.com/dotliquid/dotliquid/commit/c0f106c4aef43bd80b16f250cce3370ccb7bab81#diff-0a369498a5a8db3ac8fa606b544c9810" class="link">メンテナ求む</a>とREADMEに書かれています。メンテナが悪いというわけでは全くないのですが、やはりPRは放置気味です。</p>
+
+<h2><span class="secno"></span>{{{ }}}による謎のリテラル表記拡張がおこなわれている</h2>
+<p>本題を思い出すと、私がDotLiquidを適用したい相手はAMP用のテンプレートです。そしてAMPというか、その中でamp-listに適用できるmustacheによるテンプレート処理では、{{{ }}}が意味を持っています。</p>
+<p>ここで大変微妙なことに、DotLiquidは「Shorthand記法」をいくつか持っています。このなかに「指定範囲の記述をliquid処理エンジンで無視する」ための記述である「{literal} ～ {/literal}」に展開される、「{{{ ... }}}」があります。この構文は<a href="https://github.com/dotliquid/dotliquid/blob/master/src/DotLiquid/Tags/Literal.cs#L26-L33" class="link">https://github.com/dotliquid/dotliquid/blob/master/src/DotLiquid/Tags/Literal.cs#L26-L33</a>で展開されており、しかも展開をオフにするオプションがありません。</p>
+<p>これは少々問題ですが、差し当たり自分で使う範囲ではamp-listの中で{{{ }}}を使わないつもりなのでこのまま進めることにします。もうしばらく使ってみて不便そうならDotLiquidへパッチを投げるか考える方針でいきます(前述のメンテナ心折れ状態により、パッチを投げるハードルが若干上がっている)。</p>
+
+2017/02/24 20:47
+        </div>
+        <div class="social-buttons">
+            <amp-social-share type="twitter"></amp-social-share>
+            <amp-social-share type="b-hatena" width=44 height=44 data-share-endpoint="http://b.hatena.ne.jp/append?CANONICAL_URL"></amp-social-share>
+            <amp-social-share type="facebook" data-param-app_id=145634995501895></amp-social-share>
+            <amp-social-share type="gplus"></amp-social-share>
+        </div>
+        <h3 class="navigation">カテゴリ</h3>
+
+        <p class="content">foo</p>
+
+        <p class="content">bar</p>
+
+        <h3 class="navigation">関連記事</h3>
+        <amp-list class="content" src="/data/relation/1702_amp-facebook-share.json" width=300 height=100 layout=responsive items="container">
+            <template type="amp-mustache">
+
+                {{#items}}
+                <div>
+                    <amp-img src="{{imageUrl}}" width=50 height=50></amp-img>
+                    <a href="{{href}}">{{title}}</a>
+                </div>
+                {{/items}} {{^items}} items not found {{/items}}
+
+            </template>
+            <div overflow role=button aria-label="Show more" class="list-overflow">
+                Show more
+            </div>
+        </amp-list>
+        <p>Copyright &copy; Kei Nakazawa 2017, Licensed under <a href="https://creativecommons.org/licenses/by/4.0/deed.ja">CC-4.0-BY</a>            unless otherwise noted.</p>
+    </div>
+    <nav>
+        <h3 class="navigation">Popular Posts</h3>
+        <amp-list class="content" src="/data/popular.json" width=200 height=600 layout=responsive items="container">
+            <template type="amp-mustache">
+
+                {{#items}}
+                <div>
+                    <amp-img src="{{imageUrl}}" width=50 height=50></amp-img>
+                    <a href="{{href}}">{{title}}</a>
+                </div>
+                {{/items}}
+
+            </template>
+            <div overflow role=button aria-label="Show more" class="list-overflow">
+                Show more
+            </div>
+        </amp-list>
+        <h3 class="navigation">Categories</h3>
+        <amp-list class="content" src="/data/categories.json" width=200 height=400 layout=responsive items="container">
+            <template type="amp-mustache">
+
+                <ul>
+                    {{#items}}
+                    <li><a href="{{href}}">{{title}}</a></li>
+                    {{/items}}
+                </ul>
+
+            </template>
+            <div overflow role=button aria-label="Show more" class="list-overflow">
+                Show more
+            </div>
+        </amp-list>
+    </nav>
+</body>
+
+</html>
