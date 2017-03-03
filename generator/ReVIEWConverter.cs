@@ -6,6 +6,7 @@ using System.Xml.Linq;
 using CenterCLR.Sgml;
 using System.Linq;
 using System.Runtime.InteropServices;
+using ImageSharp;
 
 public class ReVIEWConverter
 {
@@ -72,9 +73,22 @@ public class ReVIEWConverter
         {
             el.Attribute("id").Value = idPrefix + el.Attribute("id").Value;
         }
-        foreach (var el in doc.Descendants(ns + "img"))
+        foreach (var el in doc.Descendants(ns + "img").ToList())
         {
-            el.Attribute("src").Value = "articles/" + el.Attribute("src").Value;
+            var imgName = el.Attribute("src").Value;
+            if (!File.Exists(imgName))
+            {
+                continue;
+            }
+            using (var img = new Image(imgName))
+            {
+                var ampImg = new XElement(
+                        ns + "amp-img",
+                        new XAttribute("src", "articles/" + imgName),
+                        new XAttribute("width", img.Width),
+                        new XAttribute("height", img.Height));
+                el.ReplaceWith(ampImg);
+            }
         }
         return doc;
     }
