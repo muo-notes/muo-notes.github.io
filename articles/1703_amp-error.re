@@ -26,6 +26,8 @@ dateModified				「dateModified」は推奨フィールドです。値があれ�
 mainEntityOfPage		「mainEntityOfPage」は推奨フィールドです。値があれば指定してください。
 //}
 
+== 対応方針
+
 これを解消するのは少々厄介です。
 執筆者情報は相応に書けば良いのですが、画像(image)が必須項目になっているのが少々痛いです。
 
@@ -36,3 +38,7 @@ mainEntityOfPage		「mainEntityOfPage」は推奨フィールドです。値が�
 今は「It works!」ですからね…@<fn>{it-works}。
 
 //footnote[it-works][ちなみにこれはApacheでもnginxでもなく、GitHub Pagesに@<href>{https://github.com/muo-notes/muo-notes.github.io/blob/master/index.html, それっぽい内容のファイル}を置いているだけです]
+
+== まとめ
+
+AMPでページを作る時は、@<href>{https://validator.ampproject.org/}と@<href>{https://search.google.com/structured-data/testing-tool/}の両方のバリデータを通しておいたほうが良い。
