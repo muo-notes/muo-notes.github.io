@@ -50,6 +50,7 @@ public class ReVIEWConverter
     {
         var doc = this.innerDocument;
         var ns = doc.Root.Name.Namespace;
+        XNamespace epubNs = "http://www.idpf.org/2007/ops";
 
         foreach (var el in doc.Descendants(ns + "a"))
         {
@@ -66,12 +67,22 @@ public class ReVIEWConverter
                     el.Attribute("id").Value = idPrefix + el.Attribute("id").Value;
                 }
             }
+            // cleanup epub attributes
+            if (el.Attribute(epubNs + "type") != null)
+            {
+                el.Attribute(epubNs + "type").Remove();
+            }
         }
 
         foreach (var el in doc.Descendants(ns + "div").Where(
             o => o.Attribute("class") != null ? o.Attribute("class").Value == "footnote" : false))
         {
             el.Attribute("id").Value = idPrefix + el.Attribute("id").Value;
+            // cleanup epub attributes
+            if (el.Attribute(epubNs + "type") != null)
+            {
+                el.Attribute(epubNs + "type").Remove();
+            }
         }
         foreach (var el in doc.Descendants(ns + "img").ToList())
         {
