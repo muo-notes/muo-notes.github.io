@@ -72,6 +72,10 @@ public class ReVIEWConverter
         {
             el.Attribute("id").Value = idPrefix + el.Attribute("id").Value;
         }
+        foreach (var el in doc.Descendants(ns + "img"))
+        {
+            el.Attribute("src").Value = "articles/" + el.Attribute("src").Value;
+        }
         return doc;
     }
 
