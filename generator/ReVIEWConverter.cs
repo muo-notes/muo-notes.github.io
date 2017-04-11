@@ -91,7 +91,7 @@ public class ReVIEWConverter
             {
                 continue;
             }
-            using (var img = new Image(imgName))
+            using (var img = Image.Load(imgName))
             {
                 var ampImg = new XElement(
                         ns + "amp-img",
