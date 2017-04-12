@@ -198,57 +198,8 @@
 {% for k in keywords %}
         <p class="content">{{ k }}</p>
 {% endfor %}
-        <h3 class="navigation">関連記事</h3>
-        <amp-list class="content" src="/data/relation/1702_amp-facebook-share.json" width=300 height=100 layout=responsive items="container">
-            <template type="amp-mustache">
-{% literal %}
-                {{#items}}
-                <div>
-                    <amp-img src="{{imageUrl}}" width=50 height=50></amp-img>
-                    <a href="{{href}}">{{title}}</a>
-                </div>
-                {{/items}} {{^items}} items not found {{/items}}
-{% endliteral %}
-            </template>
-            <div overflow role=button aria-label="Show more" class="list-overflow">
-                Show more
-            </div>
-        </amp-list>
         <p>Copyright &copy; Kei Nakazawa 2017, Licensed under <a href="https://creativecommons.org/licenses/by/4.0/deed.ja">CC-4.0-BY</a>            unless otherwise noted.</p>
     </div>
-    <nav>
-        <h3 class="navigation">Popular Posts</h3>
-        <amp-list class="content" src="/data/popular.json" width=200 height=600 layout=responsive items="container">
-            <template type="amp-mustache">
-{% literal %}
-                {{#items}}
-                <div>
-                    <amp-img src="{{imageUrl}}" width=50 height=50></amp-img>
-                    <a href="{{href}}">{{title}}</a>
-                </div>
-                {{/items}}
-{% endliteral %}
-            </template>
-            <div overflow role=button aria-label="Show more" class="list-overflow">
-                Show more
-            </div>
-        </amp-list>
-        <h3 class="navigation">Categories</h3>
-        <amp-list class="content" src="/data/categories.json" width=200 height=400 layout=responsive items="container">
-            <template type="amp-mustache">
-{% literal %}
-                <ul>
-                    {{#items}}
-                    <li><a href="{{href}}">{{title}}</a></li>
-                    {{/items}}
-                </ul>
-{% endliteral %}
-            </template>
-            <div overflow role=button aria-label="Show more" class="list-overflow">
-                Show more
-            </div>
-        </amp-list>
-    </nav>
 </body>
 
 </html>
