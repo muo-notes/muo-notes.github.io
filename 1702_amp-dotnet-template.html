@@ -12,8 +12,8 @@
         "@context": "http://schema.org",
         "@type": "NewsArticle",
         "headline": "AMPと相性良い.NET向けテンプレートエンジンを探す→ひとまずDotLiquidに決める",
-        "datePublished": "2017-02-24T20:47:00Z",
-        "keywords": "foo,bar"
+        "datePublished": "2017-04-12T12:56:00Z",
+        "keywords": "foo,bar",
         "image": [
         ]
       }
@@ -186,7 +186,7 @@
         <h1 class="subject">AMPと相性良い.NET向けテンプレートエンジンを探す→ひとまずDotLiquidに決める</h1>
         <div class="content review-post">
 
-<p>お読み頂いているこのblogはAMP版のみで構成されており、いわゆる通常版のページが存在しません<a id="foobarfnb-same-canonical-uri" href="#fn-same-canonical-uri" class="noteref" epub:type="noteref" xmlns:epub="http://www.idpf.org/2007/ops">*1</a>。</p>
+<p>お読み頂いているこのblogはAMP版のみで構成されており、いわゆる通常版のページが存在しません<a id="foobarfnb-same-canonical-uri" href="#fn-same-canonical-uri" class="noteref">*1</a>。</p>
 <p>blogの元データはRe:VIEWで作成しているため、出力までの間になにかしらのテンプレートエンジンが必要です。大層な置換作業をやるわけじゃないし、そんなのなんでもいいじゃないかと思わないでもないのですが、やはり不便な箇所が色々と出てくるためそうもいきません。</p>
 <p>テンプレートエンジンを雑に選ぶと後で苦労する(経験上)ので、ざっと選定条件を決めて選んでみました。</p>
 
@@ -211,7 +211,7 @@
 </ul>
 </li>
 </ul>
-<div class="footnote" epub:type="footnote" id="foobarfn-same-canonical-uri" xmlns:epub="http://www.idpf.org/2007/ops"><p class="footnote">[*1] つまり、ヘッダ内のcanonical URI指定がAMP版のページ自体を指しています</p></div>
+<div class="footnote" id="foobarfn-same-canonical-uri"><p class="footnote">[*1] つまり、ヘッダ内のcanonical URI指定がAMP版のページ自体を指しています</p></div>
 
 <h2><span class="secno"></span>書式はliquidあたりがまあ無難→DotLiquid</h2>
 <p>RazorEngineはなんというかT4系の用途に振りまくっている上にnetcoreappで扱えないので無しとしました。もう2-3探したんですが、きっちり評価する前に心が折れてきたので適当に<a href="http://dotliquidmarkup.org/" class="link">DotLiquid</a>を使ってみることにしました。</p>
@@ -235,7 +235,7 @@
 <p>ここで大変微妙なことに、DotLiquidは「Shorthand記法」をいくつか持っています。このなかに「指定範囲の記述をliquid処理エンジンで無視する」ための記述である「{literal} ～ {/literal}」に展開される、「{{{ ... }}}」があります。この構文は<a href="https://github.com/dotliquid/dotliquid/blob/master/src/DotLiquid/Tags/Literal.cs#L26-L33" class="link">https://github.com/dotliquid/dotliquid/blob/master/src/DotLiquid/Tags/Literal.cs#L26-L33</a>で展開されており、しかも展開をオフにするオプションがありません。</p>
 <p>これは少々問題ですが、差し当たり自分で使う範囲ではamp-listの中で{{{ }}}を使わないつもりなのでこのまま進めることにします。もうしばらく使ってみて不便そうならDotLiquidへパッチを投げるか考える方針でいきます(前述のメンテナ心折れ状態により、パッチを投げるハードルが若干上がっている)。</p>
 
-2017/02/24 20:47
+2017/04/12 12:56
         </div>
         <div class="social-buttons">
             <amp-social-share type="twitter"></amp-social-share>

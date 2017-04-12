@@ -12,7 +12,8 @@
         "@context": "http://schema.org",
         "@type": "NewsArticle",
         "headline": "AMPからFacebookへのシェア時に「Invalid App ID: 0」とエラーを吐く際の対応",
-        "datePublished": "2017-02-06T08:59:00Z",
+        "datePublished": "2017-04-12T12:56:00Z",
+        "keywords": "foo,bar",
         "image": [
         ]
       }
@@ -184,18 +185,20 @@
         </div>
         <h1 class="subject">AMPからFacebookへのシェア時に「Invalid App ID: 0」とエラーを吐く際の対応</h1>
         <div class="content review-post">
+
+
 <h2><span class="secno"></span>現象</h2>
 <p>AMPのソーシャルシェアに関するドキュメント: <a href="https://www.ampproject.org/docs/reference/components/amp-social-share" class="link">https://www.ampproject.org/docs/reference/components/amp-social-share</a></p>
 <p>これを読んで早速</p>
 <div class="emlist-code">
-<pre class="emlist">&lt;amp-social-share type=&quot;facebook&quot;&gt;&lt;/amp-social-share&gt;
+<pre class="emlist">&lt;amp-social-share type="facebook"&gt;&lt;/amp-social-share&gt;
 </pre>
 </div>
-<p>と書いたらボタンが表示されたので喜んだけれど、実際に飛んでみると図1.1のエラー画面が表示される。</p>
+<p>と書いたらボタンが表示されたので喜んだけれど、実際に飛んでみると<span class="imgref">図1</span>のエラー画面が表示される。</p>
 <div id="invalid-app-id" class="image">
-<amp-img src="articles/images/1702_amp-facebook-share/invalid-app-id.png" width=642 height=540 layout="responsive" alt="App IDが0でまずいと言われる"></amp-img>
+<amp-img src="articles/images/1702_amp-facebook-share/invalid-app-id.png" width="642" height="540" />
 <p class="caption">
-図1.1: App IDが0でまずいと言われる
+図1 App IDが0でまずいと言われる
 </p>
 </div>
 <p><a href="https://developers.facebook.com/docs/sharing/reference/share-dialog" class="link">facebook側のドキュメント</a>を読むとapp_idに145634995501895を渡すのがデフォルトのシェア機能呼び出しらしい。</p>
@@ -204,7 +207,7 @@
 <p>と書かれていた。ちゃんとドキュメントを読んでなかった。</p>
 <p>そういうわけで、ささっと</p>
 <div class="emlist-code">
-<pre class="emlist">&lt;amp-social-share type=&quot;facebook&quot; app_id=145634995501895&gt;&lt;/amp-social-share&gt;
+<pre class="emlist">&lt;amp-social-share type="facebook" app_id=145634995501895&gt;&lt;/amp-social-share&gt;
 </pre>
 </div>
 <p>のように変更してみる。相変わらずダメで、これはパラメータの渡し方をミスってる雰囲気。</p>
@@ -213,20 +216,21 @@
 <h2><span class="secno"></span>解決</h2>
 <p>結果、</p>
 <div class="emlist-code">
-<pre class="emlist">&lt;amp-social-share type=&quot;facebook&quot; data-param-app_id=145634995501895&gt;&lt;/amp-social-share&gt;
+<pre class="emlist">&lt;amp-social-share type="facebook" data-param-app_id=145634995501895&gt;&lt;/amp-social-share&gt;
 </pre>
 </div>
-<p>とすると図1.2の通り、無事にシェア画面へ遷移した。</p>
+<p>とすると<span class="imgref">図2</span>の通り、無事にシェア画面へ遷移した。</p>
 <div id="app-id-filled" class="image">
-<amp-img src="articles/images/1702_amp-facebook-share/app-id-filled.png" width=642 height=540 layout="responsive" alt="無事にシェア画面へ遷移した"></amp-img>
+<amp-img src="articles/images/1702_amp-facebook-share/app-id-filled.png" width="642" height="540" />
 <p class="caption">
-図1.2: 無事にシェア画面へ遷移した
+図2 無事にシェア画面へ遷移した
 </p>
 </div>
 
 <h2><span class="secno"></span>反省</h2>
 <p>Google+やTwitterがデフォルトのままで動作したので油断していました。デフォルト値をいい感じにしてあるだろうと想像して雰囲気でマークアップやるとダメなパターンですね。</p>
-            2017/02/06 08:59
+
+2017/04/12 12:56
         </div>
         <div class="social-buttons">
             <amp-social-share type="twitter"></amp-social-share>
@@ -235,16 +239,22 @@
             <amp-social-share type="gplus"></amp-social-share>
         </div>
         <h3 class="navigation">カテゴリ</h3>
-        <p class="content">AMP</p>
+
+        <p class="content">foo</p>
+
+        <p class="content">bar</p>
+
         <h3 class="navigation">関連記事</h3>
         <amp-list class="content" src="/data/relation/1702_amp-facebook-share.json" width=300 height=100 layout=responsive items="container">
             <template type="amp-mustache">
+
                 {{#items}}
                 <div>
                     <amp-img src="{{imageUrl}}" width=50 height=50></amp-img>
                     <a href="{{href}}">{{title}}</a>
                 </div>
                 {{/items}} {{^items}} items not found {{/items}}
+
             </template>
             <div overflow role=button aria-label="Show more" class="list-overflow">
                 Show more
@@ -256,12 +266,14 @@
         <h3 class="navigation">Popular Posts</h3>
         <amp-list class="content" src="/data/popular.json" width=200 height=600 layout=responsive items="container">
             <template type="amp-mustache">
+
                 {{#items}}
                 <div>
                     <amp-img src="{{imageUrl}}" width=50 height=50></amp-img>
                     <a href="{{href}}">{{title}}</a>
                 </div>
                 {{/items}}
+
             </template>
             <div overflow role=button aria-label="Show more" class="list-overflow">
                 Show more
@@ -270,11 +282,13 @@
         <h3 class="navigation">Categories</h3>
         <amp-list class="content" src="/data/categories.json" width=200 height=400 layout=responsive items="container">
             <template type="amp-mustache">
+
                 <ul>
                     {{#items}}
                     <li><a href="{{href}}">{{title}}</a></li>
                     {{/items}}
                 </ul>
+
             </template>
             <div overflow role=button aria-label="Show more" class="list-overflow">
                 Show more
