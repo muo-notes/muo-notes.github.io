@@ -12,7 +12,7 @@
         "@context": "http://schema.org",
         "@type": "NewsArticle",
         "headline": "AMPからFacebookへのシェア時に「Invalid App ID: 0」とエラーを吐く際の対応",
-        "datePublished": "2017-04-12T12:56:00Z",
+        "datePublished": "2017-04-12T13:01:00Z",
         "keywords": "foo,bar",
         "image": [
         ]
@@ -230,7 +230,7 @@
 <h2><span class="secno"></span>反省</h2>
 <p>Google+やTwitterがデフォルトのままで動作したので油断していました。デフォルト値をいい感じにしてあるだろうと想像して雰囲気でマークアップやるとダメなパターンですね。</p>
 
-2017/04/12 12:56
+2017/04/12 13:01
         </div>
         <div class="social-buttons">
             <amp-social-share type="twitter"></amp-social-share>
@@ -244,57 +244,8 @@
 
         <p class="content">bar</p>
 
-        <h3 class="navigation">関連記事</h3>
-        <amp-list class="content" src="/data/relation/1702_amp-facebook-share.json" width=300 height=100 layout=responsive items="container">
-            <template type="amp-mustache">
-
-                {{#items}}
-                <div>
-                    <amp-img src="{{imageUrl}}" width=50 height=50></amp-img>
-                    <a href="{{href}}">{{title}}</a>
-                </div>
-                {{/items}} {{^items}} items not found {{/items}}
-
-            </template>
-            <div overflow role=button aria-label="Show more" class="list-overflow">
-                Show more
-            </div>
-        </amp-list>
         <p>Copyright &copy; Kei Nakazawa 2017, Licensed under <a href="https://creativecommons.org/licenses/by/4.0/deed.ja">CC-4.0-BY</a>            unless otherwise noted.</p>
     </div>
-    <nav>
-        <h3 class="navigation">Popular Posts</h3>
-        <amp-list class="content" src="/data/popular.json" width=200 height=600 layout=responsive items="container">
-            <template type="amp-mustache">
-
-                {{#items}}
-                <div>
-                    <amp-img src="{{imageUrl}}" width=50 height=50></amp-img>
-                    <a href="{{href}}">{{title}}</a>
-                </div>
-                {{/items}}
-
-            </template>
-            <div overflow role=button aria-label="Show more" class="list-overflow">
-                Show more
-            </div>
-        </amp-list>
-        <h3 class="navigation">Categories</h3>
-        <amp-list class="content" src="/data/categories.json" width=200 height=400 layout=responsive items="container">
-            <template type="amp-mustache">
-
-                <ul>
-                    {{#items}}
-                    <li><a href="{{href}}">{{title}}</a></li>
-                    {{/items}}
-                </ul>
-
-            </template>
-            <div overflow role=button aria-label="Show more" class="list-overflow">
-                Show more
-            </div>
-        </amp-list>
-    </nav>
 </body>
 
 </html>
