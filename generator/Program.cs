@@ -25,7 +25,7 @@ class Program
                 var indexContent = conv.GenerateIndex(System.IO.Directory.GetCurrentDirectory());
                 RenderTemplate(
                     Path.Combine("templates", "index.html"),
-                    Hash.FromAnonymousObject(new { content = indexContent }),
+                    Hash.FromAnonymousObject(new { content = indexContent, postedAt = DateTime.Now }),
                     Path.Combine("..", "index.html"));
             }
             else
