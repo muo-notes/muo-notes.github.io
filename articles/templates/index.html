@@ -1,0 +1,102 @@
+<!doctype html>
+<html amp lang="ja">
+
+<head>
+    <meta charset="utf-8">
+    <script async src="https://cdn.ampproject.org/v0.js"></script>
+    <title>{{ title }}</title>
+    <link rel="canonical" href="https://notes.muo.jp/1702_amp-facebook-share.html" />
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+    <script type="application/ld+json">
+        {
+        "@context": "http://schema.org",
+        "@type": "NewsArticle",
+        "headline": "{{ title }}",
+        "datePublished": "{{ postedAt | date: "yyyy-MM-ddTHH:mm:00Z"}}",
+        "keywords": "{{ keywords | join: "," }}",
+        "image": [
+        ]
+      }
+    </script>
+    <script async custom-element="amp-list" src="https://cdn.ampproject.org/v0/amp-list-0.1.js"></script>
+    <script async custom-template="amp-mustache" src="https://cdn.ampproject.org/v0/amp-mustache-0.1.js"></script>
+    <script async custom-element="amp-social-share" src="https://cdn.ampproject.org/v0/amp-social-share-0.1.js"></script>
+    <style amp-custom>
+        .header-img {
+            border-bottom: 1px red solid;
+        }
+        
+        .header {
+            background-color: red;
+            color: white;
+            padding: 2px 2px 2px 6px;
+        }
+        
+        .social-buttons {
+            padding-top: 4px;
+            text-align: center;
+        }
+        
+        amp-social-share[type="b-hatena"] {
+            background-image: url(/res/hatenabookmark-logomark.svg);
+        }
+        
+        h2.navigation,
+        h3.navigation {
+            background-color: #CED6D3;
+            margin-left: 6px;
+            margin-bottom: 0px;
+            padding-left: 16px;
+            width: 160px;
+            border-radius: 50px 50px 0 0;
+        }
+        
+        .content {
+            margin: 0 6px 0px 6px;
+            padding: 8px 4px 8px 4px;
+            border-radius: 0 0px 2px 2px;
+            background-color: #DFE5E8;
+        }
+        
+        h1.subject {
+            font-size: 1.5em;
+        }
+        
+        div.content-wrapper {
+            text-align: left;
+        }
+        
+        body {
+            background-color: #E4ECEF;
+            color: #202121;
+        }
+
+        .image {
+          width: 60%;
+          display: block;
+          margin-left: auto;
+          margin-right: auto;
+        }
+    </style>
+<style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+</head>
+
+<body>
+    <div class="content-wrapper">
+        <div class="header-img">
+            <amp-img media="(max-width: 649px)" src="/res/logo.svg" width=90 height=17></amp-img>
+            <amp-img media="(min-width: 650px)" src="/res/logo.svg" width=160 height=30></amp-img>
+            &gt; <a href="#">AMP</a>
+        </div>
+        <div class="content">{{ content }}</div>
+        <div class="social-buttons">
+            <amp-social-share type="twitter"></amp-social-share>
+            <amp-social-share type="b-hatena" width=44 height=44 data-share-endpoint="http://b.hatena.ne.jp/append?CANONICAL_URL"></amp-social-share>
+            <amp-social-share type="facebook" data-param-app_id=145634995501895></amp-social-share>
+            <amp-social-share type="gplus"></amp-social-share>
+        </div>
+        <p>Copyright &copy; Kei Nakazawa 2017, Licensed under <a href="https://creativecommons.org/licenses/by/4.0/deed.ja">CC-4.0-BY</a>            unless otherwise noted.</p>
+    </div>
+</body>
+
+</html>

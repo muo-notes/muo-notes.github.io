@@ -13,26 +13,32 @@ public class ReVIEWConverter
     const int DEFAULT_TIMEOUT_MS = 30000;
     XDocument innerDocument;
 
-    public string CompileDocument(string filename, int timeoutMilliSec = DEFAULT_TIMEOUT_MS)
+    ProcessStartInfo CreateProcessStartInfoAtTargetDirectory(string dirname, string cmd, string args)
     {
-        var absDirectory = Path.GetDirectoryName(Path.GetFullPath(filename));
-
         var psi = new ProcessStartInfo
         {
-            WorkingDirectory = absDirectory, // care for cases currdir != targetdir
+            WorkingDirectory = dirname,
             RedirectStandardOutput = true
         };
         if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
         {
             psi.FileName = "cmd.exe";
-            psi.Arguments = $"/C review-compile --target=html {Path.GetFileName(filename)}";
+            psi.Arguments = $"/C {cmd} {args}";
         }
         else
         {
-            psi.FileName = "review-compile";
-            psi.Arguments = $"--target=html {Path.GetFileName(filename)}";
+            psi.FileName = cmd;
+            psi.Arguments = args;
         }
+        return psi;
+    }
 
+    public string CompileDocument(string filename, int timeoutMilliSec = DEFAULT_TIMEOUT_MS)
+    {
+        var psi = CreateProcessStartInfoAtTargetDirectory(
+            Path.GetDirectoryName(Path.GetFullPath(filename)),
+            "review-compile",
+            $"--target=html {Path.GetFileName(filename)}");
         var p = Process.Start(psi);
         var content = p.StandardOutput.ReadToEnd().Replace("\r\n", "\n");
         // TODO: also handle StandardError
@@ -44,6 +50,16 @@ public class ReVIEWConverter
         }
 
         return content;
+    }
+
+    public string GenerateIndex(string dir)
+    {
+        var psi = CreateProcessStartInfoAtTargetDirectory(
+            dir,
+            "review-index",
+            $"-a --html");
+        var p = Process.Start(psi);
+        return p.StandardOutput.ReadToEnd().Replace("\r\n", "\n").Replace("<a name=", "<a href=");
     }
 
     public XDocument DecorateForBlog(string idPrefix)
