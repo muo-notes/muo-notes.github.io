@@ -11,6 +11,8 @@
     <PackageReference Include="DotLiquid" Version="2.0.64" />
     <PackageReference Include="System.ValueTuple" Version="4.3.0" />
     <PackageReference Include="ImageSharp" Version="1.0.0-alpha5-00054" />
+    <PackageReference Include="Newtonsoft.Json" Version="10.0.2" />
+    <!-- <PackageReference Include="json-ld.net" Version="1.0.5" /> -->
   </ItemGroup>
 
 </Project>

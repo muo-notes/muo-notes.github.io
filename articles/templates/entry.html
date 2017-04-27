@@ -12,7 +12,8 @@
         "@context": "http://schema.org",
         "@type": "NewsArticle",
         "headline": "{{ title }}",
-        "datePublished": "{{ postedAt | date: "yyyy-MM-ddTHH:mm:00Z"}}",
+        "datePublished": "{{ publishedAt | date: "yyyy-MM-ddTHH:mm:00Z"}}",
+        "dateModified": "{{ modifiedAt | date: "yyyy-MM-ddTHH:mm:00Z"}}",
         "keywords": "{{ keywords | join: "," }}",
         "image": [
         ]
@@ -186,7 +187,7 @@
         <h1 class="subject">{{ title }}</h1>
         <div class="content review-post">
 {{ post }}
-{{ postedAt | date: "yyyy/MM/dd HH:mm"}}
+最終更新: {{ modifiedAt | date: "yyyy/MM/dd HH:mm"}}
         </div>
         <div class="social-buttons">
             <amp-social-share type="twitter"></amp-social-share>

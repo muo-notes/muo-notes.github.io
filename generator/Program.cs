@@ -2,6 +2,11 @@ using System;
 using System.IO;
 using DotLiquid;
 using DotLiquid.Tags;
+using CenterCLR.Sgml;
+using System.Text;
+using System.Linq;
+using Newtonsoft.Json;
+using System.Collections.Generic;
 
 class Program
 {
@@ -14,6 +19,34 @@ class Program
         File.WriteAllText(outputPath, result);
     }
 
+    static string RetrieveLdJsonAttribute(string filePath, string key)
+    {
+        if (!(File.Exists(filePath)))
+        {
+            return null;
+        }
+        using (var st = new MemoryStream(File.ReadAllBytes(filePath)))
+        {
+            var doc = SgmlReader.Parse(st);
+            var ns = doc.Root.Name.Namespace;
+            var ldJsonElement = doc.Descendants(ns + "script")
+                .Where(o => o.Attribute("type") != null && o.Attribute("type").Value == "application/ld+json")
+                .FirstOrDefault();
+            if (ldJsonElement == null)
+            {
+                return null;
+            }
+            // emblacing "obj" is workaround for translating non-single root JSON data into XNode
+            var jsonXObj = JsonConvert.DeserializeXNode($"{{\"obj\": {ldJsonElement.Value} }}");
+            var foundNode = jsonXObj.Descendants(key).FirstOrDefault();
+            if (foundNode == null)
+            {
+                return null;
+            }
+            return foundNode.Value;
+        }
+    }
+
     static void Main(string[] args)
     {
         if (args.Length != 0)
@@ -23,10 +56,19 @@ class Program
             {
                 Console.WriteLine("Updating index file");
                 var indexContent = conv.GenerateIndex(System.IO.Directory.GetCurrentDirectory());
+                var pagePath = Path.Combine("..", "index.html");
+                var modifiedAt = DateTime.UtcNow;
+                var publishedAt = modifiedAt;
+                if (File.Exists(pagePath))
+                {
+                    var p = DateTime.Parse(RetrieveLdJsonAttribute(pagePath, "datePublished"));
+                    publishedAt = p.ToUniversalTime();
+                }
+                var renderContent = new { content = indexContent, publishedAt = publishedAt, modifiedAt = modifiedAt };
                 RenderTemplate(
                     Path.Combine("templates", "index.html"),
-                    Hash.FromAnonymousObject(new { content = indexContent, postedAt = DateTime.Now }),
-                    Path.Combine("..", "index.html"));
+                    Hash.FromAnonymousObject(renderContent),
+                    pagePath);
             }
             else
             {
@@ -35,16 +77,25 @@ class Program
                 conv.CompileDocument(reviewFilename, REVIEW_COMPILE_TIMEOUT_MS);
                 var decoratedContent = conv.DecorateForBlog("foobar");
                 var entry = conv.ExtractTitleAndContent();
+                var pagePath = Path.Combine("..", reviewFilename.Replace(".re", ".html"));
+                var publishedAt = DateTime.UtcNow;
+                var modifiedAt = publishedAt;
+                if (File.Exists(pagePath))
+                {
+                    var p = DateTime.Parse(RetrieveLdJsonAttribute(pagePath, "datePublished"));
+                    publishedAt = p.ToUniversalTime();
+                }
                 RenderTemplate(
                     Path.Combine("templates", "entry.html"),
                     Hash.FromAnonymousObject(new
                     {
                         title = entry.title,
-                        postedAt = DateTime.Now,
+                        publishedAt = publishedAt,
+                        modifiedAt = modifiedAt,
                         post = entry.body,
                         keywords = new[] { "foo", "bar" }
                     }),
-                    Path.Combine("..", reviewFilename.Replace(".re", ".html")));
+                    pagePath);
             }
         }
     }

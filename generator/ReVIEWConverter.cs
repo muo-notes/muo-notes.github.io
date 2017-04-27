@@ -113,7 +113,8 @@ public class ReVIEWConverter
                         ns + "amp-img",
                         new XAttribute("src", "articles/" + imgName),
                         new XAttribute("width", img.Width),
-                        new XAttribute("height", img.Height));
+                        new XAttribute("height", img.Height),
+                        new XAttribute("layout", "responsive"));
                 el.ReplaceWith(ampImg);
             }
         }
