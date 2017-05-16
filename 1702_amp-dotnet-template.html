@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <script async src="https://cdn.ampproject.org/v0.js"></script>
     <title>AMPと相性良い.NET向けテンプレートエンジンを探す→ひとまずDotLiquidに決める</title>
-    <link rel="canonical" href="https://notes.muo.jp/1702_amp-facebook-share.html" />
+    <link rel="canonical" href="https://notes.muo.jp/1702_amp-dotnet-template.html" />
     <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
     <script type="application/ld+json">
         {
@@ -13,7 +13,7 @@
         "@type": "NewsArticle",
         "headline": "AMPと相性良い.NET向けテンプレートエンジンを探す→ひとまずDotLiquidに決める",
         "datePublished": "2017-04-12T13:03:00Z",
-        "dateModified": "2017-04-27T15:18:00Z",
+        "dateModified": "2017-05-16T13:34:00Z",
         "keywords": "foo,bar",
         "image": [
         ]
@@ -22,6 +22,7 @@
     <script async custom-element="amp-list" src="https://cdn.ampproject.org/v0/amp-list-0.1.js"></script>
     <script async custom-template="amp-mustache" src="https://cdn.ampproject.org/v0/amp-mustache-0.1.js"></script>
     <script async custom-element="amp-social-share" src="https://cdn.ampproject.org/v0/amp-social-share-0.1.js"></script>
+    <script async custom-element="amp-analytics" src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"></script>
     <style amp-custom>
         .header-img {
             border-bottom: 1px red solid;
@@ -236,7 +237,7 @@
 <p>ここで大変微妙なことに、DotLiquidは「Shorthand記法」をいくつか持っています。このなかに「指定範囲の記述をliquid処理エンジンで無視する」ための記述である「{literal} ～ {/literal}」に展開される、「{{{ ... }}}」があります。この構文は<a href="https://github.com/dotliquid/dotliquid/blob/master/src/DotLiquid/Tags/Literal.cs#L26-L33" class="link">https://github.com/dotliquid/dotliquid/blob/master/src/DotLiquid/Tags/Literal.cs#L26-L33</a>で展開されており、しかも展開をオフにするオプションがありません。</p>
 <p>これは少々問題ですが、差し当たり自分で使う範囲ではamp-listの中で{{{ }}}を使わないつもりなのでこのまま進めることにします。もうしばらく使ってみて不便そうならDotLiquidへパッチを投げるか考える方針でいきます(前述のメンテナ心折れ状態により、パッチを投げるハードルが若干上がっている)。</p>
 
-最終更新: 2017/04/27 15:18(UTC)
+最終更新: 2017/05/16 13:34(UTC)
         </div>
         <div class="social-buttons">
             <amp-social-share type="twitter"></amp-social-share>
@@ -246,6 +247,14 @@
         </div>
         <p>Copyright &copy; Kei Nakazawa 2017, Licensed under <a href="https://creativecommons.org/licenses/by/4.0/deed.ja">CC-4.0-BY</a>            unless otherwise noted.</p>
     </div>
+    <amp-analytics type="googleanalytics" id="muoanalytics">
+        <script type="application/json">
+        {
+            "vars": {"account": "UA-33160231-3"},
+            "triggers": { "trackPageview": { "on": "visible", "request": "pageview" } }
+        }
+        </script>
+    </amp-analytics>
 </body>
 
 </html>
