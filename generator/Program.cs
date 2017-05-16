@@ -65,7 +65,7 @@ class Program
                     var p = DateTime.Parse(RetrieveLdJsonAttribute(pagePath, "datePublished"));
                     publishedAt = p.ToUniversalTime();
                 }
-                var renderContent = new { content = indexContent, publishedAt = publishedAt, modifiedAt = modifiedAt };
+                var renderContent = new { content = indexContent, publishedAt = publishedAt, modifiedAt = modifiedAt, title = "muo notes" };
                 RenderTemplate(
                     Path.Combine("templates", "index.html"),
                     Hash.FromAnonymousObject(renderContent),
