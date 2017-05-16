@@ -22,6 +22,7 @@
     <script async custom-element="amp-list" src="https://cdn.ampproject.org/v0/amp-list-0.1.js"></script>
     <script async custom-template="amp-mustache" src="https://cdn.ampproject.org/v0/amp-mustache-0.1.js"></script>
     <script async custom-element="amp-social-share" src="https://cdn.ampproject.org/v0/amp-social-share-0.1.js"></script>
+    <script async custom-element="amp-analytics" src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"></script>
     <style amp-custom>
         .header-img {
             border-bottom: 1px red solid;
@@ -197,6 +198,14 @@
         </div>
         <p>Copyright &copy; Kei Nakazawa 2017, Licensed under <a href="https://creativecommons.org/licenses/by/4.0/deed.ja">CC-4.0-BY</a>            unless otherwise noted.</p>
     </div>
+    <amp-analytics type="googleanalytics" id="muoanalytics">
+        <script type="application/json">
+        {
+            "vars": {"account": "UA-33160231-3"},
+            "triggers": { "trackPageview": { "on": "visible", "request": "pageview" } }
+        }
+        </script>
+    </amp-analytics>
 </body>
 
 </html>
