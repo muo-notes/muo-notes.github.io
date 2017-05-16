@@ -11,6 +11,7 @@ using System.Collections.Generic;
 class Program
 {
     const int REVIEW_COMPILE_TIMEOUT_MS = 30000;
+    const string BLOG_BASE_URI = "https://notes.muo.jp/";
 
     static void RenderTemplate(string templatePath, DotLiquid.Hash hashObj, string outputPath)
     {
@@ -77,7 +78,8 @@ class Program
                 conv.CompileDocument(reviewFilename, REVIEW_COMPILE_TIMEOUT_MS);
                 var decoratedContent = conv.DecorateForBlog("foobar");
                 var entry = conv.ExtractTitleAndContent();
-                var pagePath = Path.Combine("..", reviewFilename.Replace(".re", ".html"));
+                var pageFilename = reviewFilename.Replace(".re", ".html");
+                var pagePath = Path.Combine("..", pageFilename);
                 var publishedAt = DateTime.UtcNow;
                 var modifiedAt = publishedAt;
                 if (File.Exists(pagePath))
@@ -93,7 +95,8 @@ class Program
                         publishedAt = publishedAt,
                         modifiedAt = modifiedAt,
                         post = entry.body,
-                        keywords = new[] { "foo", "bar" }
+                        keywords = new[] { "foo", "bar" },
+                        canonicalUri = $"{BLOG_BASE_URI}{pageFilename}"
                     }),
                     pagePath);
             }
