@@ -1,5 +1,8 @@
 = #技術書典 で入手した本: 電子決済できるかな？
 
+4/9(日)に開催された@<href>{https://techbookfest.org/event/tbf02, 技術書典2}で買ってきた本を読んでいくシリーズ。
+一覧は@<chapref>{1704_tbf2-booklist}。
+
 //image[cover][本題]{
 //}
 
