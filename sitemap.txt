@@ -3,10 +3,12 @@ https://notes.muo.jp/1702_amp-blog-todo.html
 https://notes.muo.jp/1702_amp-dotnet-template.html
 https://notes.muo.jp/1702_amp-facebook-share.html
 https://notes.muo.jp/1703_amp-error.html
+https://notes.muo.jp/1703_docker-gui-hosting.html
 https://notes.muo.jp/1704_tbf2-booklist.html
 https://notes.muo.jp/1704_tbf2-reset-css.html
 https://notes.muo.jp/1704_tbf2-smt.html
 https://notes.muo.jp/1704_tbf2-tdd-pact.html
 https://notes.muo.jp/1704_tbf2-youtenvr.html
 https://notes.muo.jp/1705_tbf2-iori.html
+https://notes.muo.jp/1705_tbf2-payment.html
 https://notes.muo.jp/index.html

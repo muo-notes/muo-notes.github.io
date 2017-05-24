@@ -5,13 +5,14 @@ CHAPS:
   - 1702_amp-dotnet-template.re
   - 1702_amp-facebook-share.re
   - 1703_amp-error.re
-  - 1703_docker-gui-hosting.re
   - 1704_tbf2-smt.re
   - 1704_tbf2-booklist.re
   - 1704_tbf2-youtenvr.re
   - 1704_tbf2-tdd-pact.re
   - 1704_tbf2-reset-css.re
   - 1705_tbf2-iori.re
+  - 1705_docker-gui-hosting.re
+  - 1705_tbf2-payment.re
 
 APPENDIX:
 
