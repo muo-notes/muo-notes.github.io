@@ -4,17 +4,17 @@
 <head>
     <meta charset="utf-8">
     <script async src="https://cdn.ampproject.org/v0.js"></script>
-    <title>RISC-V ISAの基本構造 #RISC-V</title>
+    <title>RISC-V ISAの基本構造</title>
     <link rel="canonical" href="https://notes.muo.jp/1707_riscv-arch.html" />
     <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
     <script type="application/ld+json">
         {
         "@context": "http://schema.org",
         "@type": "NewsArticle",
-        "headline": "RISC-V ISAの基本構造 #RISC-V",
+        "headline": "RISC-V ISAの基本構造",
         "datePublished": "2017-07-05T10:32:00Z",
-        "dateModified": "2017-07-05T10:32:00Z",
-        "keywords": "foo,bar",
+        "dateModified": "2017-07-05T22:53:00Z",
+        "keywords": "RISC-V",
         "image": [
         ]
       }
@@ -185,7 +185,7 @@
             <amp-img media="(min-width: 650px)" src="/res/logo.svg" width=160 height=30></amp-img>
             &gt; <a href="#">AMP</a>
         </div>
-        <h1 class="subject">RISC-V ISAの基本構造 #RISC-V</h1>
+        <h1 class="subject">RISC-V ISAの基本構造</h1>
         <div class="content review-post">
 
 <p>RISC-Vの仕様は<a href="https://riscv.org/specifications/" class="link">https://riscv.org/specifications/</a>で入手できます。ここでは本稿執筆時点の最新版であるユーザレベルISA 2.2に基づいて解説します。特権アーキテクチャに関するドラフト仕様書も別途公開されていますが、今回は扱いません。</p>
@@ -214,7 +214,7 @@
 <p>RV32Eは32-bitアドレス空間向けのみで標準化されている組み込み向け命令セットです。具体的にはRV32Iの持つ32のレジスタを16まで削り(これにより25%のコア面積とそれに伴う消費電力を削減できるとしている)、ハードウェアタイマーやカウンタの擬似命令を必須から外したものです。この場合、50個未満の命令でマイクロコントローラーを実装できます。RV32EにはM,A,C命令群を実装することもできるので、実装面積に余裕があれば実行速度やプログラムサイズの削減に役立てられます。しかしハードウェアでの浮動小数点演算(F/D/Q)はサポートせず、Unix系のOSをフルに実行できることを目指すものでもないため、あくまでもマイクロコントローラ向けの用途といえます。</p>
 <p>RISC-VのユーザモードISAの中で頻出するものを概説しました。ここで挙げた以外の拡張命令と拡張提案についても機会を改めて書きたいところですが、気になる方は前述のISA仕様書を確認してみてください。</p>
 
-最終更新: 2017/07/05 10:32(UTC)
+最終更新: 2017/07/05 22:53(UTC)
         </div>
         <div class="social-buttons">
             <amp-social-share type="twitter"></amp-social-share>
