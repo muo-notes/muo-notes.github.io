@@ -3,4 +3,4 @@
 CWD=`dirname $0`
 
 cd $CWD
-./build.sh index
+dotnet ../generator/bin/Debug/netcoreapp1.0/generator.dll index
