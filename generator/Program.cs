@@ -95,7 +95,7 @@ class Program
                         publishedAt = publishedAt,
                         modifiedAt = modifiedAt,
                         post = entry.body,
-                        keywords = new[] { "foo", "bar" },
+                        keywords = entry.keywords,
                         canonicalUri = $"{BLOG_BASE_URI}{pageFilename}"
                     }),
                     pagePath);
