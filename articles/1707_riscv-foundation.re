@@ -15,7 +15,7 @@ RISC-Vはカリフォルニア大学バークレー校の研究プロジェク�
 
 //footnote[foundation-roles][直近のミッションや委員会/タスクグループ一覧については、2017年5月に開催された第6回RISC-Vワークショップでの@<href>{https://riscv.org/wp-content/uploads/2017/05/Mon1145-RISC-V-Foundation-Update.pdf, Foundation Update}(PDF)を読むのが手っ取り早いです]
 
-== RISC-V商号の商用利用に必要な手続き
+== RISC-V名称/ロゴの商用利用に必要な手続き
 
 RISC-VはオープンでロイヤリティーフリーのISAですが、商用製品においてRISC-Vの名称やロゴといったブランドを利用したい場合には手続きが必要です。
 
