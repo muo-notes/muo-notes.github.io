@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Linq;
 
 namespace ReVIEWBlog
 {
@@ -48,9 +49,9 @@ namespace ReVIEWBlog
             }
             var buf = new StringBuilder();
             buf.Append("<ul class=\"book-toc\">\n");
-            foreach (var ch in mChapters)
+            foreach (var ch in (mChapters as IEnumerable<ReVIEWChapter>).Reverse())
             {
-                buf.Append($"<li><a href=\"./{ch.Filename}.html\">{ch.No} {ch.Title}</a></li>\n");
+                buf.Append($"<li><a href=\"./{ch.Filename}.html\">{ch.Title}</a></li>\n");
                 if (ch.Sections.Count == 0)
                 {
                     continue;
