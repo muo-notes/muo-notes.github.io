@@ -11,7 +11,7 @@ CHAPS:
   - 1704_tbf2-tdd-pact.re
   - 1704_tbf2-reset-css.re
   - 1705_tbf2-iori.re
-  - 1705_docker-gui-hosting.re
+#  - 1705_docker-gui-hosting.re
   - 1705_tbf2-payment.re
   - 1707_riscv-arch.re
   - 1707_riscv-foundation.re
