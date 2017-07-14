@@ -13,4 +13,5 @@ https://notes.muo.jp/1705_tbf2-iori.html
 https://notes.muo.jp/1705_tbf2-payment.html
 https://notes.muo.jp/1707_riscv-arch.html
 https://notes.muo.jp/1707_riscv-foundation.html
+https://notes.muo.jp/1707_tbf2-a-frame.html
 https://notes.muo.jp/index.html
