@@ -52,7 +52,7 @@ class Program
     {
         if (args.Length != 0)
         {
-            var conv = new ReVIEWConverter();
+            var conv = new ReVIEWBlog.ReVIEWConverter();
             if (args[0] == "index")
             {
                 Console.WriteLine("Updating index file");
