@@ -41,7 +41,7 @@ namespace ReVIEWBlog
             mChapters = this.ParseIndex(indexSrc);
         }
 
-        public string GenerateSimpleHTML()
+        public string GenerateSimpleHTML(Func<string,string> titleDecorator = null)
         {
             if (mChapters == null)
             {
@@ -51,7 +51,8 @@ namespace ReVIEWBlog
             buf.Append("<ul class=\"book-toc\">\n");
             foreach (var ch in (mChapters as IEnumerable<ReVIEWChapter>).Reverse())
             {
-                buf.Append($"<li><a href=\"./{ch.Filename}.html\">{ch.Title}</a></li>\n");
+                var title = titleDecorator != null ? titleDecorator(ch.Title) : ch.Title;
+                buf.Append($"<li><a href=\"./{ch.Filename}.html\">{title}</a></li>\n");
                 if (ch.Sections.Count == 0)
                 {
                     continue;
@@ -70,7 +71,7 @@ namespace ReVIEWBlog
         private List<ReVIEWChapter> ParseIndex(string indexSrc)
         {
             // simple parser
-            var rChapter = new Regex(@"^\s*(?<chap_no>\d+).\s*(?<chap_kb>\d+)KB\s*(?<chap_chars>\d+)C\s*(?<chap_lines>\d+)L\s+(?<chap_title>.+)\((?<chap_filename>[^\)]+)\)$");
+            var rChapter = new Regex(@"^\s*(?<chap_no>\d+).\s*(?<chap_kb>\d+)KB\s*(?<chap_chars>\d+)C\s*(?<chap_lines>\d+)L\s+(?<chap_title>.+)\s*\((?<chap_filename>[^\)]+)\)$");
             var rSection = new Regex(@"^\s*(?<sec_lines>\d+)L\s*(?<sec_no>\d+)\s+(?<sec_title>.+)\s*$");
             var chapters = new List<ReVIEWChapter>();
             ReVIEWChapter currentChapter = null;
@@ -85,7 +86,7 @@ namespace ReVIEWBlog
                         Kb = Int32.Parse(m1.Groups["chap_kb"].Value),
                         Chars = Int32.Parse(m1.Groups["chap_chars"].Value),
                         Lines = Int32.Parse(m1.Groups["chap_lines"].Value),
-                        Title = m1.Groups["chap_title"].Value,
+                        Title = m1.Groups["chap_title"].Value.Trim(),
                         Filename = m1.Groups["chap_filename"].Value,
                         Sections = new List<ReVIEWSection>(),
                     };

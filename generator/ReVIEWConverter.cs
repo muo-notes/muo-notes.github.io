@@ -41,7 +41,7 @@ namespace ReVIEWBlog
         {
             var idx = new ReVIEWIndex();
             idx.Prepare(dir);
-            return idx.GenerateSimpleHTML();
+            return idx.GenerateSimpleHTML(titleDecorator: s => SeparateKeywordsFromTitle(s).subject);
         }
 
         public XDocument DecorateForBlog(string idPrefix)
@@ -116,8 +116,16 @@ namespace ReVIEWBlog
             {
                 keywords.Add(m.Value.Substring(1));
             }
-            var subject = Regex.Replace(originalTitle, keywordPattern, "").Trim();
-            return (subject, keywords);
+            // trim trailing tags only (keep tags found in this manner: "#tag is great")
+            // so, "#tag is great #foo #bar #baz" -> "#tag is great"
+            string subjectCandidate = originalTitle.Trim();
+            string prevCandidate = string.Empty;
+            while (prevCandidate.Length < subjectCandidate.Length)
+            {
+                prevCandidate = subjectCandidate;
+                subjectCandidate = Regex.Replace(subjectCandidate, "\\s*#\\S+$", "");
+            }
+            return (subjectCandidate, keywords);
         }
         public (string title, List<string> keywords, string body) ExtractTitleAndContent()
         {
