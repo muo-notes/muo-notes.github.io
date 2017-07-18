@@ -1,7 +1,7 @@
 = #技術書典 で入手した本: WANTEDLY TECH BOOK 2
 
 4/9(日)に開催された@<href>{https://techbookfest.org/event/tbf02, 技術書典2}で買ってきた本を読んでいくシリーズ。
-#@# 一覧は@<chapref>{1704_tbf2-booklist}。
+一覧は@<chapref>{1704_tbf2-booklist}。
 
 もう買ってから3ヶ月経っていてだいぶアレだけど読み終わるまで読みます。
 
