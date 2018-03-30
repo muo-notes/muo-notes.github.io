@@ -86,7 +86,7 @@ Androidには@<href>{Jota+, https://play.google.com/store/apps/details?id=jp.sbl
 //}
 
 //emlist{
-Androidには@<href>{Jota+, https/play.google.com/store/apps/details?id=jp.sblo.pandora.jota.plus}という優れたテキストエディタがあります。
+Androidには@<uchar>{0040}<href>{Jota+, https/play.google.com/store/apps/details?id=jp.sblo.pandora.jota.plus}という優れたテキストエディタがあります。
 //}
 
 //image[inline-only][インライン記法内のURIを除去]{
