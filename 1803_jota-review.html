@@ -1,0 +1,332 @@
+<!doctype html>
+<html amp lang="ja">
+
+<head>
+    <meta charset="utf-8">
+    <script async src="https://cdn.ampproject.org/v0.js"></script>
+    <title>AndroidとJota+でRe:VIEW原稿を書く</title>
+    <link rel="canonical" href="https://notes.muo.jp/1803_jota-review.html" />
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+    <script type="application/ld+json">
+        {
+        "@context": "http://schema.org",
+        "@type": "NewsArticle",
+        "headline": "AndroidとJota+でRe:VIEW原稿を書く",
+        "datePublished": "2018-03-30T05:22:00Z",
+        "dateModified": "2018-03-30T05:22:00Z",
+        "keywords": "",
+        "image": [
+        ]
+      }
+    </script>
+    <script async custom-element="amp-list" src="https://cdn.ampproject.org/v0/amp-list-0.1.js"></script>
+    <script async custom-template="amp-mustache" src="https://cdn.ampproject.org/v0/amp-mustache-0.1.js"></script>
+    <script async custom-element="amp-social-share" src="https://cdn.ampproject.org/v0/amp-social-share-0.1.js"></script>
+    <script async custom-element="amp-analytics" src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"></script>
+    <style amp-custom>
+        .header-img {
+            border-bottom: 1px red solid;
+        }
+        
+        .header {
+            background-color: red;
+            color: white;
+            padding: 2px 2px 2px 6px;
+        }
+        
+        .social-buttons {
+            padding-top: 4px;
+            text-align: center;
+        }
+        
+        amp-social-share[type="b-hatena"] {
+            background-image: url(/res/hatenabookmark-logomark.svg);
+        }
+        
+        h2.navigation,
+        h3.navigation {
+            background-color: #CED6D3;
+            margin-left: 6px;
+            margin-bottom: 0px;
+            padding-left: 16px;
+            width: 160px;
+            border-radius: 50px 50px 0 0;
+        }
+        
+        .content {
+            margin: 0 6px 0px 6px;
+            padding: 8px 4px 8px 4px;
+            border-radius: 0 0px 2px 2px;
+            background-color: #DFE5E8;
+        }
+        
+        h1.subject {
+            font-size: 1.5em;
+        }
+        
+        div.content-wrapper {
+            text-align: left;
+        }
+        
+        .review-post pre.cmd {
+            overflow: auto;
+            padding: 8px;
+            background-color: black;
+            color: #ffffff;
+        }
+        
+        .review-post pre.emlist {
+            overflow: auto;
+            margin: 8px;
+            background-color: #f9f9f9;
+        }
+        
+        .review-post tt.inline-code {
+            font-weight: bold;
+        }
+        
+        .review-post br {
+            margin: 0px 0px 12px 0px;
+            display: block;
+            content: " ";
+        }
+        
+        .review-post h2,
+        .review-post h3,
+        .review-post h4 {
+            color: #757EFF;
+            border-bottom: 1px solid #000;
+            padding-bottom: 0.1em;
+        }
+        
+        .review-post h2 {
+            font-size: 1.5em;
+        }
+        
+        .review-post h3 {
+            font-size: 1.2em;
+        }
+        
+        .review-post h4 {
+            font-size: 1.1em;
+        }
+        
+        .review-post.image p.caption {
+            text-align: center;
+            margin-bottom: 1em;
+        }
+        
+        .review-post ul li {
+            padding: 0px;
+        }
+        
+        .review-post div.footnote ~ h2 {
+            margin-top: 1em;
+        }
+        
+        .review-post div.footnote ~ h3 {
+            margin-top: 1em;
+        }
+        
+        .review-post div.footnote ~ h4 {
+            margin-top: 1em;
+        }
+        
+        .review-post a.noteref {
+            vertical-align: super;
+        }
+        
+        pre.list {
+            background-color: #def;
+            border: 2px dotted;
+            padding: 4px;
+        }
+        
+        .review-post div.column {
+            margin: 8px;
+            padding: 12px;
+            background-color: #eeeeee;
+            border-radius: 4px;
+        }
+        
+        .review-post blockquote {
+            border: 1px solid green;
+        }
+
+        @media only screen and (min-width:1119px) {
+            nav {
+                display: block;
+                width: 188px;
+                float: left;
+            }
+        }
+        
+        @media only screen and (max-width:1118px) {
+            nav {
+                display: none;
+            }
+        }
+
+        body {
+            background-color: #E4ECEF;
+            color: #202121;
+        }
+
+        .image {
+          width: 60%;
+          display: block;
+          margin-left: auto;
+          margin-right: auto;
+        }
+    </style>
+<style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+</head>
+
+<body>
+    <div class="content-wrapper">
+        <div class="header-img">
+            <a href="/"><amp-img media="(max-width: 649px)" src="/res/logo.svg" width=90 height=17></amp-img>
+            <amp-img media="(min-width: 650px)" src="/res/logo.svg" width=160 height=30></amp-img></a>
+        </div>
+        <h1 class="subject">AndroidとJota+でRe:VIEW原稿を書く</h1>
+        <div class="content review-post">
+
+<p>春です。技術書執筆の季節ですね。</p>
+<p>Androidには<a href="Jota+" class="link">https://play.google.com/store/apps/details?id=jp.sblo.pandora.jota.plus</a>という優れたテキストエディタがあります。</p>
+<p>先日、Jota+を使って雑誌記事を執筆する機会があり、結構快適に原稿を書き進められたので気に入りました。</p>
+<p>Jota+は当初Re:VIEW記法を標準サポートしていませんでしたが、公式ドキュメントを軽く読んだところシンタックスハイライト対応は比較的簡単そうだったのでやってみました（<span class="imgref">図1</span>）。</p>
+<div id="jota-plus-review" class="image">
+<amp-img src="articles/images/1803_jota-review/jota-plus-review.jpg" width="2560" height="1440" layout="responsive" />
+<p class="caption">
+図1 Jota+でRe:VIEW文書を開いたところ
+</p>
+</div>
+<p>その後に本家へ取り込んでもらっています（感謝!）。</p>
+
+<h2><span class="secno"></span>Jota+の良いところ</h2>
+<p>本題へ入る前に、Jota+の良いところというか、気に入っているところをいくつか挙げてみます。</p>
+<ul>
+<li>物理キーボードの接続も考慮して設計されている<ul>
+<li>キーボードショートカットが充実している</li>
+</ul>
+</li>
+<li>シンタックスハイライト定義ファイルを自前で用意して利用できる</li>
+<li>文字コードの自動認識を含めて一通りの機能が揃っている<ul>
+<li>全角スペースの可視化や文字サイズ設定なども地味に揃っている</li>
+</ul>
+</li>
+<li>エディタがバックグラウンドへ回ったタイミングで自動セーブするなど、モバイルアプリとしての出来がきっちり良い</li>
+<li>ファイル作成系はかなり弱い（たとえば.txt以外の新規ファイル作成が困難。つまり.reも）けれどアプリのフォーカスを編集機能に絞っているので問題ない<ul>
+<li>MGitでファイル管理、Jota+で編集という分担が至高</li>
+</ul>
+</li>
+<li>2018年3月時点でも積極的にメンテナンスされている</li>
+</ul>
+<p>少し使ってみると、このどれもが大変尊いことだと分かります。</p>
+
+<h2><span class="secno"></span>Jota+の拡張性</h2>
+<p>先代であるJotaの時代から、ユーザが自前でシンタックスハイライト設定を増やせるようになっています。</p>
+<p><a href="Jota Text Editor‎(日本語) &gt; シンタックスハイライト" class="link">https://sites.google.com/site/aquamarinepandora/home/jota-text-editor-ja/shintakkusuhairaito</a></p>
+<p>仕様面では色定義を言語独自に追加できず、colors.confというグローバルなファイルをいじる必要がある点が少々惜しいところです。シンタックスハイライト設定を書く際にはなるべく論理面に近い色指定をしたいのですが、これはconfファイルのコメントで補完するのが無難でしょう。</p>
+
+<h2><span class="secno"></span>最低限のRe:VIEW用シンタックスハイライト設定を書いた</h2>
+<p>なんと既に標準バンドルして配布してくださっています。ありがたい限りです。</p>
+<p>Re:VIEWサポートにあたっては結構割り切った部分が多く、設定エントリ数は少なめで正規表現も比較的単純なものを利用しました。</p>
+<p>次に設定ファイルの全文を掲載します。</p>
+<div id="re.conf" class="caption-code">
+<p class="caption">リスト1 Jota+のRe:VIEW用キーワード定義</p>
+<pre class="list language-conf">#
+# Re:VIEW keyword file for Jota Text Editor.
+#
+# This file is in the Public Domain and distributed on "AS IS" basis.
+
+author=Kei Nakazawa
+version=0.01
+red=={1,5} [^\n]*
+statement= \*+ [^\n]*
+statement2=//\w*[^\n]*[\{\}]*
+string=@&lt;\w+&gt;\{[^\}]+\}
+linecomment=#@#[^\n]*
+</pre>
+</div>
+<p>Re:VIEWの見出し、ブロック記法、インライン記法、コメントをカバーしていることが分かります。</p>
+
+<h2><span class="secno"></span>シンタックスハイライト指定のクセ</h2>
+<p>正規表現をこねていく上ではいくらかの試行錯誤がありました。Jota+本体の特性を把握しておいたほうがスムースに作業を進められるので、ここでいくつか指定上のクセを紹介します。</p>
+<p>重要な原則として、Jota+ではおそらく画面表示時の演算コストを減らすために「複数のパターンに対する同時マッチ」をしていません。</p>
+<p>たとえば本エントリ冒頭の</p>
+<div class="emlist-code">
+<pre class="emlist">Androidには<a href="Jota+" class="link">https://play.google.com/store/apps/details?id=jp.sblo.pandora.jota.plus</a>という優れたテキストエディタがあります。
+</pre>
+</div>
+<p>という部分は、Re:VIEW記法としてはインライン要素のhrefを書いています。つまり<code class="inline-code tt">string=@&lt;\w+&gt;\{[^}]+}</code>に該当します。しかしこの指定はJota+が内部に持つURIハイライト機能と競合するようで、意図した表示にはなりません（<span class="imgref">図2</span>）。</p>
+<div id="inline-and-uri" class="image">
+<amp-img src="articles/images/1803_jota-review/inline-and-uri.png" width="1238" height="137" layout="responsive" />
+<p class="caption">
+図2 インライン記法+URIの表示
+</p>
+</div>
+<div class="emlist-code">
+<pre class="emlist">Androidには<a href="Jota+" class="link">https/play.google.com/store/apps/details?id=jp.sblo.pandora.jota.plus</a>という優れたテキストエディタがあります。
+</pre>
+</div>
+<div id="inline-only" class="image">
+<amp-img src="articles/images/1803_jota-review/inline-only.png" width="1246" height="143" layout="responsive" />
+<p class="caption">
+図3 インライン記法内のURIを除去
+</p>
+</div>
+<p><span class="imgref">図3</span>のように削ってみると意図通りhref要素全体がカラーリングされるので、やはり内部の正規表現処理順による事情のように見えます。</p>
+<p>ちなみに、似た現象はfootprintでも発生します。</p>
+<div class="emlist-code">
+<pre class="emlist">//footnote[foo][ちなみにfooは<a href="https://foo.example.com/foobar.htm" class="link">https://foo.example.com/foobar.htm</a>でアクセスできます。]
+</pre>
+</div>
+<p>このとき、footnote内のhref要素は別途ハイライトされてほしいところですが、内蔵のURIハイライトを除く行全体がfootnote側のカラーリングに統一されます（<span class="imgref">図4</span>）。</p>
+<div id="inline-in-footnote" class="image">
+<amp-img src="articles/images/1803_jota-review/inline-in-footnote.png" width="1114" height="133" layout="responsive" />
+<p class="caption">
+図4 footnote内にインライン要素を配置した場合
+</p>
+</div>
+<p>正規表現の適用順によってhref向けの指定が上書きされているのか、と気になるところなので少し試してみます。</p>
+<div class="emlist-code">
+<pre class="emlist"><a href="/ /footnote[foo][ちなみにfoo]は" class="link">/ /footnote[foo][ちなみにfoo]は</a>
+<a href="//footnote[foo][ちなみにfoo]は" class="link">//footnote[foo][ちなみにfoo]は</a>
+<a href="foobar" class="link">foobar</a> //footnote[foo][ちなみにfoo]
+//footnote[foo][ちなみにfoo] <a href="foobar" class="link">foobar</a>
+</pre>
+</div>
+<p>Re:VIEWの構文としてはおかしいのですが、Jota+の実装を推測する上では十分です。</p>
+<div id="regexp-tests" class="image">
+<amp-img src="articles/images/1803_jota-review/regexp-tests.png" width="1014" height="181" layout="responsive" />
+<p class="caption">
+図5 正規表現適用挙動を観測するためのテスト
+</p>
+</div>
+<p><span class="imgref">図5</span>の結果からは、行単位でマッチングを実施し、先にfootnote側でマッチしたら、当該マッチ範囲を含むhref側のマッチングを打ち切る挙動に見えます。4番目を見ての通り、footnoteについて行末まで指定のマッチングをかけているためかもしれません。</p>
+<p>この先は、少し他の言語用設定ファイルを熟読してもう少し改善してみたいところです。</p>
+<p>マルチラインマッチング条件を指定するとまた別ムーブをしそうですが、基本的にマルチライン指定を多用すると大きめのドキュメントを扱う際にパフォーマンス面の問題があるかも、と思ってRe:VIEW設定ファイルを書く際には避けました。</p>
+<p>Re:VIEW構文に合わせた厳密な処理のためにはきちんとした構文解析が必須で、その筋を頑張るよりはRe:VIEW文書をモバイル環境で簡単にプレビューできるようにしたほうが筋良さそうです。</p>
+
+最終更新: 2018/03/30 05:22(UTC)
+        </div>
+        <div class="social-buttons">
+            <amp-social-share type="twitter"></amp-social-share>
+            <amp-social-share type="b-hatena" width=44 height=44 data-share-endpoint="http://b.hatena.ne.jp/append?CANONICAL_URL"></amp-social-share>
+            <amp-social-share type="facebook" data-param-app_id=145634995501895></amp-social-share>
+            <amp-social-share type="gplus"></amp-social-share>
+        </div>
+        <p>Copyright &copy; Kei Nakazawa 2017, Licensed under <a href="https://creativecommons.org/licenses/by/4.0/deed.ja">CC-4.0-BY</a>            unless otherwise noted.</p>
+    </div>
+    <amp-analytics type="googleanalytics" id="muoanalytics">
+        <script type="application/json">
+        {
+            "vars": {"account": "UA-33160231-3"},
+            "triggers": { "trackPageview": { "on": "visible", "request": "pageview" } }
+        }
+        </script>
+    </amp-analytics>
+</body>
+
+</html>
