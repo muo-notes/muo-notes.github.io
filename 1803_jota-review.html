@@ -13,7 +13,7 @@
         "@type": "NewsArticle",
         "headline": "AndroidとJota+でRe:VIEW原稿を書く",
         "datePublished": "2018-03-30T05:22:00Z",
-        "dateModified": "2018-03-30T12:46:00Z",
+        "dateModified": "2018-03-30T13:02:00Z",
         "keywords": "",
         "image": [
         ]
@@ -256,7 +256,7 @@ linecomment=#@#[^\n]*
 <p>重要な原則として、Jota+ではおそらく画面表示時の演算コストを減らすために「複数のパターンに対する同時マッチ」をしていません。</p>
 <p>たとえば本エントリ冒頭の</p>
 <div class="emlist-code">
-<pre class="emlist">Androidには<a href="Jota+" class="link">https://play.google.com/store/apps/details?id=jp.sblo.pandora.jota.plus</a>という優れたテキストエディタがあります。
+<pre class="emlist">Androidには@&lt;href&gt;{https://play.google.com/store/apps/details?id=jp.sblo.pandora.jota.plus, Jota+}という優れたテキストエディタがあります。
 </pre>
 </div>
 <p>という部分は、Re:VIEW記法としてはインライン要素のhrefを書いています。つまり<code class="inline-code tt">string=@&lt;\w+&gt;\{[^}]+}</code>に該当します。しかしこの指定はJota+が内部に持つURIハイライト機能と競合するようで、意図した表示にはなりません（<span class="imgref">図2</span>）。</p>
@@ -267,7 +267,7 @@ linecomment=#@#[^\n]*
 </p>
 </div>
 <div class="emlist-code">
-<pre class="emlist">Androidには@&lt;href&gt;{Jota+, https/play.google.com/store/apps/details?id=jp.sblo.pandora.jota.plus}という優れたテキストエディタがあります。
+<pre class="emlist">Androidには@&lt;href&gt;{https://play.google.com/store/apps/details?id=jp.sblo.pandora.jota.plus, Jota+}という優れたテキストエディタがあります。
 </pre>
 </div>
 <div id="inline-only" class="image">
@@ -279,7 +279,7 @@ linecomment=#@#[^\n]*
 <p><span class="imgref">図3</span>のように削ってみると意図通りhref要素全体がカラーリングされるので、やはり内部の正規表現処理順による事情のように見えます。</p>
 <p>ちなみに、似た現象はfootprintでも発生します。</p>
 <div class="emlist-code">
-<pre class="emlist">//footnote[foo][ちなみにfooは<a href="https://foo.example.com/foobar.htm" class="link">https://foo.example.com/foobar.htm</a>でアクセスできます。]
+<pre class="emlist">//footnote[foo][ちなみにfooは@&lt;href&gt;{https://foo.example.com/foobar.htm}でアクセスできます。]
 </pre>
 </div>
 <p>このとき、footnote内のhref要素は別途ハイライトされてほしいところですが、内蔵のURIハイライトを除く行全体がfootnote側のカラーリングに統一されます（<span class="imgref">図4</span>）。</p>
@@ -291,10 +291,10 @@ linecomment=#@#[^\n]*
 </div>
 <p>正規表現の適用順によってhref向けの指定が上書きされているのか、と気になるところなので少し試してみます。</p>
 <div class="emlist-code">
-<pre class="emlist"><a href="/ /footnote[foo][ちなみにfoo]は" class="link">/ /footnote[foo][ちなみにfoo]は</a>
-<a href="//footnote[foo][ちなみにfoo]は" class="link">//footnote[foo][ちなみにfoo]は</a>
-<a href="foobar" class="link">foobar</a> //footnote[foo][ちなみにfoo]
-//footnote[foo][ちなみにfoo] <a href="foobar" class="link">foobar</a>
+<pre class="emlist">@&lt;href&gt;{/ /footnote[foo][ちなみにfoo]は}
+@&lt;href&gt;{//footnote[foo][ちなみにfoo]は}
+@&lt;href&gt;{foobar} //footnote[foo][ちなみにfoo]
+//footnote[foo][ちなみにfoo] @&lt;href&gt;{foobar}
 </pre>
 </div>
 <p>Re:VIEWの構文としてはおかしいのですが、Jota+の実装を推測する上では十分です。</p>
@@ -309,7 +309,7 @@ linecomment=#@#[^\n]*
 <p>マルチラインマッチング条件を指定するとまた別ムーブをしそうですが、基本的にマルチライン指定を多用すると大きめのドキュメントを扱う際にパフォーマンス面の問題があるかも、と思ってRe:VIEW設定ファイルを書く際には避けました。</p>
 <p>Re:VIEW構文に合わせた厳密な処理のためにはきちんとした構文解析が必須で、その筋を頑張るよりはRe:VIEW文書をモバイル環境で簡単にプレビューできるようにしたほうが筋良さそうです。</p>
 
-最終更新: 2018/03/30 12:46(UTC)
+最終更新: 2018/03/30 13:02(UTC)
         </div>
         <div class="social-buttons">
             <amp-social-share type="twitter"></amp-social-share>

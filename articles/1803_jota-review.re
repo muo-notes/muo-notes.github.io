@@ -75,7 +75,7 @@ Jota+本体の特性を把握しておいたほうがスムースに作業を進
 たとえば本エントリ冒頭の
 
 //emlist{
-Androidには@<href>{Jota+, https://play.google.com/store/apps/details?id=jp.sblo.pandora.jota.plus}という優れたテキストエディタがあります。
+Androidには@<uchar>{0040}<href>{https://play.google.com/store/apps/details?id=jp.sblo.pandora.jota.plus, Jota+}という優れたテキストエディタがあります。
 //}
 
 という部分は、Re:VIEW記法としてはインライン要素のhrefを書いています。
@@ -86,7 +86,7 @@ Androidには@<href>{Jota+, https://play.google.com/store/apps/details?id=jp.sbl
 //}
 
 //emlist{
-Androidには@<uchar>{0040}<href>{Jota+, https/play.google.com/store/apps/details?id=jp.sblo.pandora.jota.plus}という優れたテキストエディタがあります。
+Androidには@<uchar>{0040}<href>{https://play.google.com/store/apps/details?id=jp.sblo.pandora.jota.plus, Jota+}という優れたテキストエディタがあります。
 //}
 
 //image[inline-only][インライン記法内のURIを除去]{
@@ -97,7 +97,7 @@ Androidには@<uchar>{0040}<href>{Jota+, https/play.google.com/store/apps/detail
 ちなみに、似た現象はfootprintでも発生します。
 
 //emlist{
-//footnote[foo][ちなみにfooは@<href>{https://foo.example.com/foobar.htm}でアクセスできます。]
+//footnote[foo][ちなみにfooは@<uchar>{0040}<href>{https://foo.example.com/foobar.htm}でアクセスできます。]
 //}
 
 このとき、footnote内のhref要素は別途ハイライトされてほしいところですが、内蔵のURIハイライトを除く行全体がfootnote側のカラーリングに統一されます（@<img>{inline-in-footnote}）。
@@ -108,10 +108,10 @@ Androidには@<uchar>{0040}<href>{Jota+, https/play.google.com/store/apps/detail
 正規表現の適用順によってhref向けの指定が上書きされているのか、と気になるところなので少し試してみます。
 
 //emlist{
-@<href>{/ /footnote[foo][ちなみにfoo]は}
-@<href>{//footnote[foo][ちなみにfoo]は}
-@<href>{foobar} //footnote[foo][ちなみにfoo]
-//footnote[foo][ちなみにfoo] @<href>{foobar}
+@<uchar>{0040}<href>{/ /footnote[foo][ちなみにfoo]は}
+@<uchar>{0040}<href>{//footnote[foo][ちなみにfoo]は}
+@<uchar>{0040}<href>{foobar} //footnote[foo][ちなみにfoo]
+//footnote[foo][ちなみにfoo] @<uchar>{0040}<href>{foobar}
 //}
 
 Re:VIEWの構文としてはおかしいのですが、Jota+の実装を推測する上では十分です。
