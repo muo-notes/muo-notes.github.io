@@ -3,7 +3,7 @@
 春です。
 技術書執筆の季節ですね。
 
-Androidには@<href>{Jota+, https://play.google.com/store/apps/details?id=jp.sblo.pandora.jota.plus}という優れたテキストエディタがあります。
+Androidには@<href>{https://play.google.com/store/apps/details?id=jp.sblo.pandora.jota.plus, Jota+}という優れたテキストエディタがあります。
 
 先日、Jota+を使って雑誌記事を執筆する機会があり、結構快適に原稿を書き進められたので気に入りました。
 
@@ -34,7 +34,7 @@ Jota+は当初Re:VIEW記法を標準サポートしていませんでしたが�
 
 先代であるJotaの時代から、ユーザが自前でシンタックスハイライト設定を増やせるようになっています。
 
-@<href>{Jota Text Editor‎(日本語) > シンタックスハイライト, https://sites.google.com/site/aquamarinepandora/home/jota-text-editor-ja/shintakkusuhairaito}
+@<href>{https://sites.google.com/site/aquamarinepandora/home/jota-text-editor-ja/shintakkusuhairaito, Jota Text Editor‎(日本語) > シンタックスハイライト}
 
 仕様面では色定義を言語独自に追加できず、colors.confというグローバルなファイルをいじる必要がある点が少々惜しいところです。
 シンタックスハイライト設定を書く際にはなるべく論理面に近い色指定をしたいのですが、これはconfファイルのコメントで補完するのが無難でしょう。
