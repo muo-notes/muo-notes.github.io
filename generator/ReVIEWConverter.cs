@@ -6,7 +6,7 @@ using System.Xml.Linq;
 using CenterCLR.Sgml;
 using System.Linq;
 using System.Runtime.InteropServices;
-using ImageSharp;
+using SixLabors.ImageSharp;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 
